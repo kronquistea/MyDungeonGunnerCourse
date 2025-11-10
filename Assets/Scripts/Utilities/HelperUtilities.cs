@@ -10,12 +10,12 @@ public static class HelperUtilities
     /// <param name="thisObject"></param>
     /// <param name="fieldName"></param>
     /// <param name="stringToCheck"></param>
-    /// <returns>bool true/false</returns>
+    /// <returns>True if string is empty, false otherwise</returns>
     public static bool ValidateCheckEmptyString(Object thisObject, string fieldName, string stringToCheck)
     {
         if (stringToCheck == "")
         {
-            Debug.Log(fieldName + " is empty and must contain a vlaue in object " + thisObject.name.ToString());
+            Debug.Log(fieldName + " is empty and must contain a value in object " + thisObject.name.ToString());
             return true;
         }
         return false;
@@ -27,7 +27,7 @@ public static class HelperUtilities
     /// <param name="thisObject"></param>
     /// <param name="fieldName"></param>
     /// <param name="enumerableObjectToCheck"></param>
-    /// <returns>bool error</returns>
+    /// <returns>True if error exists, false otherwise</returns>
     public static bool ValidateCheckEnumerableValues(Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)
     {
         bool error = false;
