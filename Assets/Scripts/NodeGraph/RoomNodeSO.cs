@@ -12,7 +12,7 @@ public class RoomNodeSO : ScriptableObject
     public RoomNodeTypeSO roomNodeType;
     [HideInInspector] public RoomNodeTypeListSO roomNodeTypeList;
 
-    #region Editor CODE
+    #region Editor Code
 #if UNITY_EDITOR
     [HideInInspector] public Rect rect;
     [HideInInspector] public bool isLeftClickDragging = false;
@@ -121,6 +121,11 @@ public class RoomNodeSO : ScriptableObject
         {
             ProcessLeftClickDownEvent();
         }
+        // RMB down
+        else if (currentEvent.button == 1)
+        {
+            ProcessRightClickDownEvent(currentEvent);
+        }
     }
 
     /// <summary>
@@ -132,6 +137,15 @@ public class RoomNodeSO : ScriptableObject
 
         // Toggle node selection
         isSelected = !isSelected;
+    }
+
+    /// <summary>
+    /// Process right click down
+    /// </summary>
+    /// <param name="currentEvent"></param>
+    private void ProcessRightClickDownEvent(Event currentEvent)
+    {
+        roomNodeGraph.SetNodeToDrawConnetionLineFrom(this, currentEvent.mousePosition);
     }
 
     /// <summary>
@@ -192,6 +206,28 @@ public class RoomNodeSO : ScriptableObject
         EditorUtility.SetDirty(this);
     }
 
+    /// <summary>
+    /// Add childID to the node
+    /// </summary>
+    /// <param name="childID"></param>
+    /// <returns>True if the node has been added, false otherwise.</returns>
+    public bool AddChildRoomNodeIDToRoomNode(string childID)
+    {
+        childRoomNodeIDList.Add(childID);
+        return true;
+    }
+
+    /// <summary>
+    /// Add parentID to the node
+    /// </summary>
+    /// <param name="parentID"></param>
+    /// <returns>True if the node has been added, false otherwise</returns>
+    public bool AddParentRoomNodeIDToRoomNode(string parentID)
+    {
+        parentRoomNodeIDList.Add(parentID);
+        return true;
+    }
+
 #endif
-    #endregion Editor CODE
+    #endregion Editor Code
 }
