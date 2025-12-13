@@ -22,7 +22,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 90
+    x: 91
     y: 543
     width: 160
     height: 75
@@ -50,7 +50,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 1438
+    x: 1439
     y: 693
     width: 160
     height: 75
@@ -78,7 +78,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 1272
+    x: 1273
     y: 375
     width: 160
     height: 75
@@ -105,7 +105,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 1273
+    x: 1274
     y: 692
     width: 160
     height: 75
@@ -133,7 +133,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 943
+    x: 944
     y: 143
     width: 160
     height: 75
@@ -160,7 +160,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 439
+    x: 440
     y: 283
     width: 160
     height: 75
@@ -189,7 +189,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 439
+    x: 440
     y: 451
     width: 160
     height: 75
@@ -217,7 +217,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 436
+    x: 437
     y: 367
     width: 160
     height: 75
@@ -245,7 +245,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 944
+    x: 945
     y: 63
     width: 160
     height: 75
@@ -274,7 +274,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 779
+    x: 780
     y: 452
     width: 160
     height: 75
@@ -302,7 +302,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 91
+    x: 92
     y: 710
     width: 160
     height: 75
@@ -330,7 +330,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 90
+    x: 91
     y: 212
     width: 160
     height: 75
@@ -358,7 +358,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 1102
+    x: 1103
     y: 375
     width: 160
     height: 75
@@ -385,7 +385,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 607
+    x: 608
     y: 66
     width: 160
     height: 75
@@ -413,7 +413,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 91
+    x: 92
     y: 369
     width: 160
     height: 75
@@ -489,7 +489,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 780
+    x: 781
     y: 617
     width: 160
     height: 75
@@ -517,7 +517,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 1440
+    x: 1441
     y: 537
     width: 160
     height: 75
@@ -545,7 +545,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 610
+    x: 611
     y: 450
     width: 160
     height: 75
@@ -573,7 +573,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 942
+    x: 943
     y: 216
     width: 160
     height: 75
@@ -602,7 +602,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 941
+    x: 942
     y: 375
     width: 160
     height: 75
@@ -630,7 +630,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 779
+    x: 780
     y: 535
     width: 160
     height: 75
@@ -658,7 +658,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 943
+    x: 944
     y: 295
     width: 160
     height: 75
@@ -685,7 +685,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 92
+    x: 93
     y: 140
     width: 160
     height: 75
@@ -713,7 +713,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 776
+    x: 777
     y: 64
     width: 160
     height: 75
@@ -742,7 +742,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 92
+    x: 93
     y: 452
     width: 160
     height: 75
@@ -770,7 +770,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 267
+    x: 268
     y: 450
     width: 160
     height: 75
@@ -797,7 +797,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 264
+    x: 265
     y: 715
     width: 160
     height: 75
@@ -825,7 +825,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 1439
+    x: 1440
     y: 374
     width: 160
     height: 75
@@ -853,7 +853,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 90
+    x: 91
     y: 629
     width: 160
     height: 75
@@ -881,7 +881,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 1438
+    x: 1439
     y: 614
     width: 160
     height: 75
@@ -909,7 +909,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 1441
+    x: 1442
     y: 456
     width: 160
     height: 75
@@ -937,7 +937,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 88
+    x: 89
     y: 289
     width: 160
     height: 75
@@ -965,7 +965,7 @@ MonoBehaviour:
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
   rect:
     serializedVersion: 2
-    x: 944
+    x: 945
     y: 453
     width: 160
     height: 75

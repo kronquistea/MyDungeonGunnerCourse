@@ -5,15 +5,23 @@ using UnityEngine;
 
 public class RoomNodeSO : ScriptableObject
 {
-    [HideInInspector] public string id;
-    [HideInInspector] public List<string> parentRoomNodeIDList = new List<string>();
-    [HideInInspector] public List<string> childRoomNodeIDList = new List<string>();
+    public string id;
+    public List<string> parentRoomNodeIDList = new List<string>();
+    public List<string> childRoomNodeIDList = new List<string>();
     [HideInInspector] public RoomNodeGraphSO roomNodeGraph;
     public RoomNodeTypeSO roomNodeType;
     [HideInInspector] public RoomNodeTypeListSO roomNodeTypeList;
 
+    // Node Layout Values
+    private const float _RoomNodeWidth = 160f;
+    private const float _RoomNodeHeight = 75f;
+
+    private const float _CorridorNodeWidth = 125f;
+    private const float _CorridorNodeHeight = 75f;
+
     #region Editor Code
 #if UNITY_EDITOR
+    [HideInInspector] public GUIStyle style;
     [HideInInspector] public Rect rect;
     [HideInInspector] public bool isLeftClickDragging = false;
     [HideInInspector] public bool isSelected = false;
@@ -47,6 +55,25 @@ public class RoomNodeSO : ScriptableObject
 
         // Start region to detect popup selection changes
         EditorGUI.BeginChangeCheck();
+
+        if (roomNodeType.isCorridor)
+        {
+            rect.width = _CorridorNodeWidth;
+            rect.height = _CorridorNodeHeight;
+            GUI.contentColor = Color.white;
+        }
+        else if (roomNodeType.isChestRoom)
+        {
+            rect.width = _RoomNodeWidth;
+            rect.height = _RoomNodeHeight;
+            GUI.contentColor = Color.black;
+        }
+        else
+        {
+            rect.width = _RoomNodeWidth;
+            rect.height = _RoomNodeHeight;
+            GUI.contentColor = Color.white;
+        }
 
         // If the room node has a parent or is of type entrance, then display a label, else display a popup
         if (parentRoomNodeIDList.Count > 0 || roomNodeType.isEntrance)

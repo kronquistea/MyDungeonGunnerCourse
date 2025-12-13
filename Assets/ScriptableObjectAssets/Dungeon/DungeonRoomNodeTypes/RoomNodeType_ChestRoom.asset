@@ -19,4 +19,5 @@ MonoBehaviour:
   isCorrdorEW: 0
   isEntrance: 0
   isBossRoom: 0
+  isChestRoom: 1
   isNone: 0
