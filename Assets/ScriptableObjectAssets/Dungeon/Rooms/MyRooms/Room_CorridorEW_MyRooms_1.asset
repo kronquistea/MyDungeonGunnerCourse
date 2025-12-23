@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2708e4084c4a1534ba646096300f778c, type: 3}
-  m_Name: Room_CorridorEW_Catacombs_3
+  m_Name: Room_CorridorEW_MyRooms_1
   m_EditorClassIdentifier: 
-  guid: 4ab73057b5eec8d4aa29d75ee2ec4602
-  prefab: {fileID: 5351491626515514454, guid: e9efaf53240919648a6246b3daaa448f, type: 3}
-  previousPrefab: {fileID: 5351491626515514454, guid: e9efaf53240919648a6246b3daaa448f, type: 3}
+  guid: 64b00a88c3a252b48b5efbfb1b53e2c6
+  prefab: {fileID: 3365652060040740738, guid: 4b62957973434ad4a87dec712533bb58, type: 3}
+  previousPrefab: {fileID: 3365652060040740738, guid: 4b62957973434ad4a87dec712533bb58, type: 3}
   roomNodeType: {fileID: 11400000, guid: a364360f112b1a84c9f6ae64277cd949, type: 2}
-  lowerBounds: {x: -3, y: -6}
-  upperBounds: {x: 16, y: 7}
+  lowerBounds: {x: -2, y: 0}
+  upperBounds: {x: 24, y: 12}
   doorwayList:
-  - position: {x: -3, y: -4}
+  - position: {x: -2, y: 2}
     orientation: 3
     doorPrefab: {fileID: 0}
     doorwayStartCopyPosition: {x: 0, y: 0}
@@ -27,7 +27,7 @@ MonoBehaviour:
     doorwayCopyTileHeight: 0
     isConnected: 0
     isUnavailable: 0
-  - position: {x: 16, y: -1}
+  - position: {x: 24, y: 2}
     orientation: 1
     doorPrefab: {fileID: 0}
     doorwayStartCopyPosition: {x: 0, y: 0}
@@ -36,4 +36,4 @@ MonoBehaviour:
     isConnected: 0
     isUnavailable: 0
   spawnPositionArray:
-  - {x: 9, y: 2}
+  - {x: 10, y: 7}
