@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [DisallowMultipleComponent]
 public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
@@ -235,7 +236,7 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
             }
             else
             {
-                roomOverlaps = false;
+                roomOverlaps = true;
             }
         }
 
@@ -356,7 +357,7 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
         }
         else
         {
-            // Mark the parent doorway as unavailable so we don't tru and connect it again
+            // Mark the parent doorway as unavailable so we don't try and connect it again
             doorwayParent.isUnavailable = true;
 
             return false;
@@ -617,7 +618,28 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
     /// </summary>
     private void InstantiateRoomGameobjects()
     {
+        // Iterate through all dungeon rooms
+        foreach (KeyValuePair<string, Room> keyvaluepair in dungeonBuilderRoomDictionary)
+        {
+            Room room = keyvaluepair.Value;
 
+            // Calculate room positions (remember the room instantiation position needs to be adjusted by the room template lower bounds)
+            Vector3 roomPosition = new Vector3(room.lowerBounds.x - room.templateLowerBounds.x, room.lowerBounds.y - room.templateLowerBounds.y, 0f);
+
+            // Instantiate room
+            GameObject roomGameObject = Instantiate(room.prefab, roomPosition, Quaternion.identity, transform);
+
+            // Get instantiated room component from instantiated prefab
+            InstantiatedRoom instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
+
+            instantiatedRoom.room = room;
+
+            // Initialize the instantiated room
+            instantiatedRoom.Initialize(roomGameObject);
+
+            // Save gameobject reference
+            room.instantiatedRoom = instantiatedRoom;
+        }
     }
 
     /// <summary>
