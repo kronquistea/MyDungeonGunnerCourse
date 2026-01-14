@@ -981,7 +981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227588318318580144}
   - component: {fileID: 1462120759972737929}
-  - component: {fileID: -2363703777795771079}
+  - component: {fileID: -3907540121568226912}
   m_Layer: 12
   m_Name: CorridorNS_Sorcery_2
   m_TagString: Untagged
@@ -1031,7 +1031,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 23}
   m_EdgeRadius: 0
---- !u!114 &-2363703777795771079
+--- !u!114 &-3907540121568226912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

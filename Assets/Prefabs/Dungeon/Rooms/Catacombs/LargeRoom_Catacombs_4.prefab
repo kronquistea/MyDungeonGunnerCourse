@@ -27193,7 +27193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227588318318580144}
   - component: {fileID: 1462120759972737929}
-  - component: {fileID: -5998689559576626890}
+  - component: {fileID: -2993028233715514442}
   m_Layer: 12
   m_Name: LargeRoom_Catacombs_4
   m_TagString: Untagged
@@ -27243,7 +27243,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 59, y: 46}
   m_EdgeRadius: 0
---- !u!114 &-5998689559576626890
+--- !u!114 &-2993028233715514442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

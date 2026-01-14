@@ -159,7 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5216467037987909746}
   - component: {fileID: 786471829101970182}
-  - component: {fileID: 5675751212438708474}
+  - component: {fileID: -3381146943848732579}
   m_Layer: 12
   m_Name: RoomTemplate
   m_TagString: Untagged
@@ -209,7 +209,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5675751212438708474
+--- !u!114 &-3381146943848732579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

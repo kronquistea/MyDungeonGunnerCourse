@@ -4361,7 +4361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227588318318580144}
   - component: {fileID: 1462120759972737929}
-  - component: {fileID: -2090557058301560455}
+  - component: {fileID: 4728151674680617334}
   m_Layer: 12
   m_Name: ChestRoom_Catacombs_4
   m_TagString: Untagged
@@ -4411,7 +4411,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19, y: 20}
   m_EdgeRadius: 0
---- !u!114 &-2090557058301560455
+--- !u!114 &4728151674680617334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

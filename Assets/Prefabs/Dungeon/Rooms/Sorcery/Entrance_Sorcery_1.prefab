@@ -6191,7 +6191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227588318318580144}
   - component: {fileID: 1462120759972737929}
-  - component: {fileID: -5540167204106861218}
+  - component: {fileID: -2459170711495017092}
   m_Layer: 12
   m_Name: Entrance_Sorcery_1
   m_TagString: Untagged
@@ -6241,7 +6241,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 21, y: 23}
   m_EdgeRadius: 0
---- !u!114 &-5540167204106861218
+--- !u!114 &-2459170711495017092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

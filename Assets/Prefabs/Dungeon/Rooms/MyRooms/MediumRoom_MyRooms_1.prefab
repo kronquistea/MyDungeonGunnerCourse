@@ -1481,7 +1481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5216467037987909746}
   - component: {fileID: 786471829101970182}
-  - component: {fileID: -3424246816346668791}
+  - component: {fileID: 5319067265797804102}
   m_Layer: 12
   m_Name: MediumRoom_MyRooms_1
   m_TagString: Untagged
@@ -1531,7 +1531,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 54, y: 48}
   m_EdgeRadius: 0
---- !u!114 &-3424246816346668791
+--- !u!114 &5319067265797804102
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

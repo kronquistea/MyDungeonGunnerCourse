@@ -8481,7 +8481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227588318318580144}
   - component: {fileID: 1462120759972737929}
-  - component: {fileID: 4559956381974462389}
+  - component: {fileID: 2985045685355921511}
   m_Layer: 12
   m_Name: CorridorEW_Sorcery_5
   m_TagString: Untagged
@@ -8531,7 +8531,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 39, y: 24}
   m_EdgeRadius: 0
---- !u!114 &4559956381974462389
+--- !u!114 &2985045685355921511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

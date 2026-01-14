@@ -8855,7 +8855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3054645827938798965}
   - component: {fileID: 5476505636122767180}
-  - component: {fileID: -4681965000945057198}
+  - component: {fileID: -150879501976190793}
   m_Layer: 12
   m_Name: Entrance_Catacombs_2
   m_TagString: Untagged
@@ -8905,7 +8905,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 22, y: 23}
   m_EdgeRadius: 0
---- !u!114 &-4681965000945057198
+--- !u!114 &-150879501976190793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

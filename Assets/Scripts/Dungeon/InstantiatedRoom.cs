@@ -35,6 +35,8 @@ public class InstantiatedRoom : MonoBehaviour
     {
         PopulateTilemapMemberVariables(roomGameObject);
 
+        // BlockOffUnusedDoorways();
+
         DisableCollisionTilemapRenderer();
     }
 
@@ -75,6 +77,126 @@ public class InstantiatedRoom : MonoBehaviour
             else if (tilemap.gameObject.tag == "minimapTilemap")
             {
                 minimapTilemap = tilemap;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Block off unused doorways in the room
+    /// </summary>
+    private void BlockOffUnusedDoorways()
+    {
+        // Loop through all doorways
+        foreach (Doorway doorway in room.doorwayList)
+        {
+            if (doorway.isConnected)
+                continue;
+
+            // Block unconnected doorways using tiles on tilemaps
+            if (collisionTilemap != null)
+            {
+                BlockADoorwayOnTilemapLayer(collisionTilemap, doorway);
+            }
+
+            if (minimapTilemap != null)
+            {
+                BlockADoorwayOnTilemapLayer(minimapTilemap, doorway);
+            }
+
+            if (groundTilemap != null)
+            {
+                BlockADoorwayOnTilemapLayer(groundTilemap, doorway);
+            }
+
+            if (decoration1Tilemap != null)
+            {
+                BlockADoorwayOnTilemapLayer(decoration1Tilemap, doorway);
+            }
+
+            if (decoration2Tilemap != null)
+            {
+                BlockADoorwayOnTilemapLayer(decoration2Tilemap, doorway);
+            }
+
+            if (frontTilemap != null)
+            {
+                BlockADoorwayOnTilemapLayer(frontTilemap, doorway);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Block a doorway on a tilemap layer
+    /// </summary>
+    /// <param name="tilemap"></param>
+    /// <param name="doorway"></param>
+    private void BlockADoorwayOnTilemapLayer(Tilemap tilemap, Doorway doorway)
+    {
+        switch (doorway.orientation)
+        {
+            case Orientation.north:
+            case Orientation.south:
+                BlockDoorwayHorizontally(tilemap, doorway);
+                break;
+
+            case Orientation.east:
+            case Orientation.west:
+                BlockDoorwayVertically(tilemap, doorway);
+                break;
+
+            case Orientation.none:
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Block doorway horizontally - for N/S doorways
+    /// </summary>
+    /// <param name="tilemap"></param>
+    /// <param name="doorway"></param>
+    private void BlockDoorwayHorizontally(Tilemap tilemap, Doorway doorway)
+    {
+        Vector2Int startPosition = doorway.doorwayStartCopyPosition;
+
+        // loop through all tiles to copy
+        for (int xPos = 0; xPos < doorway.doorwayCopyTileWidth; xPos++)
+        {
+            for (int yPos = 0; yPos < doorway.doorwayCopyTileHeight; yPos++)
+            {
+                // Get rotation of tile being copied
+                Matrix4x4 transformMatrix = tilemap.GetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0));
+
+                // Copy tile
+                tilemap.SetTile(new Vector3Int(startPosition.x + 1 + xPos, startPosition.y - yPos, 0), tilemap.GetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0)));
+
+                // Set rotation of tile copied
+                tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + 1 + xPos, startPosition.y - yPos, 0), transformMatrix);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Block doorway vertically - for E/W doorways
+    /// </summary>
+    /// <param name="tilemap"></param>
+    /// <param name="doorway"></param>
+    private void BlockDoorwayVertically(Tilemap tilemap, Doorway doorway)
+    {
+        Vector2Int startPosition = doorway.doorwayStartCopyPosition;
+
+        // loop through all tiles to copy
+        for (int yPos = 0; yPos < doorway.doorwayCopyTileHeight; yPos++)
+        {
+            for (int xPos = 0; xPos < doorway.doorwayCopyTileWidth; xPos++)
+            {
+                // Get rotation of tile being copied
+                Matrix4x4 transformMatrix = tilemap.GetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0));
+
+                // Copy tile
+                tilemap.SetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0), tilemap.GetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0)));
+
+                // Set rotation of tile copied
+                tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0), transformMatrix);
             }
         }
     }

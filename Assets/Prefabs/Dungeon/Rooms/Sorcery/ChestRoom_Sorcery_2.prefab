@@ -4867,7 +4867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227588318318580144}
   - component: {fileID: 1462120759972737929}
-  - component: {fileID: -1761414491187594828}
+  - component: {fileID: -7090307405553077761}
   m_Layer: 12
   m_Name: ChestRoom_Sorcery_2
   m_TagString: Untagged
@@ -4917,7 +4917,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 17, y: 22}
   m_EdgeRadius: 0
---- !u!114 &-1761414491187594828
+--- !u!114 &-7090307405553077761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

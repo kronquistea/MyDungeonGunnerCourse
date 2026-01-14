@@ -18477,7 +18477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227588318318580144}
   - component: {fileID: 1462120759972737929}
-  - component: {fileID: -7145420344299193162}
+  - component: {fileID: -4470527239165516843}
   m_Layer: 12
   m_Name: BossRoom_Catacombs_2
   m_TagString: Untagged
@@ -18527,7 +18527,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 47, y: 41}
   m_EdgeRadius: 0
---- !u!114 &-7145420344299193162
+--- !u!114 &-4470527239165516843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -29649,7 +29649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227588318318580144}
   - component: {fileID: 1462120759972737929}
-  - component: {fileID: 798845696847966437}
+  - component: {fileID: -8398008458248726165}
   m_Layer: 12
   m_Name: LargeRoom_Sorcery_1
   m_TagString: Untagged
@@ -29699,7 +29699,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 43, y: 67}
   m_EdgeRadius: 0
---- !u!114 &798845696847966437
+--- !u!114 &-8398008458248726165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

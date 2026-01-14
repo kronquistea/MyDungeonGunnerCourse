@@ -20425,7 +20425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 781279090519665528}
   - component: {fileID: 7832768966227593537}
-  - component: {fileID: -1928139963439833958}
+  - component: {fileID: 5128184666245464617}
   m_Layer: 12
   m_Name: BossRoom_Sorcery_2
   m_TagString: Untagged
@@ -20475,7 +20475,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 46, y: 40}
   m_EdgeRadius: 0
---- !u!114 &-1928139963439833958
+--- !u!114 &5128184666245464617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

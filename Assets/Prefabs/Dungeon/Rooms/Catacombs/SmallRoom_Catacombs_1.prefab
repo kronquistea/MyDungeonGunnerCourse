@@ -8759,7 +8759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227588318318580144}
   - component: {fileID: 1462120759972737929}
-  - component: {fileID: 2727834066377114815}
+  - component: {fileID: -2757203091726626983}
   m_Layer: 12
   m_Name: SmallRoom_Catacombs_1
   m_TagString: Untagged
@@ -8809,7 +8809,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 28, y: 27}
   m_EdgeRadius: 0
---- !u!114 &2727834066377114815
+--- !u!114 &-2757203091726626983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

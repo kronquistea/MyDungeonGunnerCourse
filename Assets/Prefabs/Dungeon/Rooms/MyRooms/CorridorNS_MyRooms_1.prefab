@@ -249,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5216467037987909746}
   - component: {fileID: 786471829101970182}
-  - component: {fileID: -2350497952312350170}
+  - component: {fileID: -8027939911399441215}
   m_Layer: 12
   m_Name: CorridorNS_MyRooms_1
   m_TagString: Untagged
@@ -299,7 +299,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 21}
   m_EdgeRadius: 0
---- !u!114 &-2350497952312350170
+--- !u!114 &-8027939911399441215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

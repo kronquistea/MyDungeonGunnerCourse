@@ -25351,7 +25351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8227588318318580144}
   - component: {fileID: 1462120759972737929}
-  - component: {fileID: 4192192329722136803}
+  - component: {fileID: -4401052033751023075}
   m_Layer: 12
   m_Name: MediumRoom_Sorcery_2
   m_TagString: Untagged
@@ -25401,7 +25401,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 49, y: 48}
   m_EdgeRadius: 0
---- !u!114 &4192192329722136803
+--- !u!114 &-4401052033751023075
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -2374,7 +2374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 316384385408736750}
   - component: {fileID: 7061706898141806551}
-  - component: {fileID: 2441495554233643530}
+  - component: {fileID: 6734522057827376582}
   m_Layer: 12
   m_Name: CorridorEW_Catacombs_1
   m_TagString: Untagged
@@ -2424,7 +2424,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 5}
   m_EdgeRadius: 0
---- !u!114 &2441495554233643530
+--- !u!114 &6734522057827376582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

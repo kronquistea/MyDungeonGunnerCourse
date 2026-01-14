@@ -206,15 +206,15 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
         while (roomOverlaps)
         {
             // Select random unconnected available doorway for parent
-            List<Doorway> unconnectedAvailalbeParentDoorways = GetUnconnectedAvailableDoorways(parentRoom.doorwayList).ToList();
+            List<Doorway> unconnectedAvailableParentDoorways = GetUnconnectedAvailableDoorways(parentRoom.doorwayList).ToList();
 
-            if (unconnectedAvailalbeParentDoorways.Count == 0)
+            if (unconnectedAvailableParentDoorways.Count == 0)
             {
                 // If no more doorways to try then return overlap failure
                 return false; // room overlaps
             }
 
-            Doorway doorwayParent = unconnectedAvailalbeParentDoorways[UnityEngine.Random.Range(0, unconnectedAvailalbeParentDoorways.Count)];
+            Doorway doorwayParent = unconnectedAvailableParentDoorways[UnityEngine.Random.Range(0, unconnectedAvailableParentDoorways.Count)];
 
             // Get a random room template for room node that is consistent with the parent door orientation
             RoomTemplateSO roomTemplate = GetRandomTemplateForRoomConsistentWithParent(roomNode, doorwayParent);
@@ -647,7 +647,7 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
     /// </summary>
     /// <param name="roomTemplateID"></param>
     /// <returns>Null if ID does NOT exist</returns>
-    private RoomTemplateSO GetRoomTemplate(string roomTemplateID)
+    public RoomTemplateSO GetRoomTemplate(string roomTemplateID)
     {
         if (roomTemplateDictionary.TryGetValue(roomTemplateID, out RoomTemplateSO roomTemplate))
         {
