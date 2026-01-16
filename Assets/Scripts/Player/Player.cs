@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 #region REQUIRED COMPONENTS
+[RequireComponent(typeof(Health))]
 [RequireComponent(typeof(SortingGroup))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
