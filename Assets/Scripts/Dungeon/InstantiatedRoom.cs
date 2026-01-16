@@ -35,7 +35,7 @@ public class InstantiatedRoom : MonoBehaviour
     {
         PopulateTilemapMemberVariables(roomGameObject);
 
-        // BlockOffUnusedDoorways();
+        BlockOffUnusedDoorways();
 
         DisableCollisionTilemapRenderer();
     }
