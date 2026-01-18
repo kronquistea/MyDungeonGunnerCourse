@@ -7,9 +7,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6973811017490247868, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973811017490247868, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973811017490247868, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a684c398415573345beba4cf973dd036, type: 3}
+    - target: {fileID: 6973811017490247868, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973811017490247868, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301661675840880429, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301661675840880429, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843436039067776735, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843436039067776735, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843436039348130288, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843436039348130290, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 34e2d1b09a08bd84f86710e708fd7b91, type: 2}
     - target: {fileID: 8843436039348130292, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: TheThief
       objectReference: {fileID: 0}
     - target: {fileID: 8843436039348130295, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +98,34 @@ PrefabInstance:
     - target: {fileID: 8843436039348130295, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843436039348130301, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2200474710894333254, guid: 913a88d5e3d2bfa4ead9a977286362ad, type: 3}
+    - target: {fileID: 8843436039407275037, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843436040764426809, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843436040764426809, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843436040764426809, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a684c398415573345beba4cf973dd036, type: 3}
+    - target: {fileID: 8843436040764426809, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843436040764426809, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93f53d6c4ba7604aa659b10faeca9bc, type: 3}
