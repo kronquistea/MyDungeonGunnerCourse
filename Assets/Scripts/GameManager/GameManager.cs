@@ -19,7 +19,38 @@ public class GameManager : SingletonMonobehavior<GameManager>
     #endregion Tooltip
     [SerializeField] private int currentDungeonLevelListIndex = 0;
 
+    private Room currentRoom;
+    private Room previousRoom;
+
+    private PlayerDetailsSO playerDetails;
+    private Player player;
+
     [HideInInspector] public GameState gameState;
+
+    protected override void Awake()
+    {
+        // Call base class
+        base.Awake();
+
+        // Set player details - saved in current player scriptable object from the main menu
+        playerDetails = GameResources.Instance.currentPlayer.playerDetails;
+
+        InstantiatePlayer();
+    }
+
+    /// <summary>
+    /// Create player in scene at position
+    /// </summary>
+    private void InstantiatePlayer()
+    {
+        // Instantiate player
+        GameObject playerGameObject = Instantiate(playerDetails.playerPrefab);
+
+        // Initialize player
+        player = playerGameObject.GetComponent<Player>();
+
+        player.Initialize(playerDetails);
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -56,6 +87,19 @@ public class GameManager : SingletonMonobehavior<GameManager>
     }
 
     /// <summary>
+    /// Set the current room the player is in
+    /// </summary>
+    /// <param name="room"></param>
+    public void SetCurrentRoom(Room room)
+    {
+        previousRoom = currentRoom;
+        currentRoom = room;
+
+        //// Debug
+        // Debug.log(room.prefab.name.ToString());
+    }
+
+    /// <summary>
     /// Play dungeon level
     /// </summary>
     /// <param name="dungeonLevelListIndex"></param>
@@ -68,6 +112,33 @@ public class GameManager : SingletonMonobehavior<GameManager>
         {
             Debug.LogError("Could not build dungeon from specified rooms and node graphs");
         }
+
+        // Set player roughly mid-room
+        player.gameObject.transform.position = new Vector3(
+            (currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f,
+            (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f,
+            0f);
+
+        // Get nearest spawn point in room nearest to player
+        player.gameObject.transform.position = HelperUtilities.GetSpawnPositionNearestToPlayer(player.gameObject.transform.position);
+    }
+
+    /// <summary>
+    /// Get the current room the player is in
+    /// </summary>
+    /// <returns>Current room</returns>
+    public Room GetCurrentRoom()
+    {
+        return currentRoom;
+    }
+
+    /// <summary>
+    /// Get the player
+    /// </summary>
+    /// <returns></returns>
+    public Player GetPlayer()
+    {
+        return player;
     }
 
     #region Validation

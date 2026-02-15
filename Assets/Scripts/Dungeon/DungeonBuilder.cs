@@ -57,6 +57,9 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
             // Select a random room node graph from the list
             RoomNodeGraphSO roomNodeGraph = SelectRandomRoomNodeGraph(currentDungeonLevel.roomNodeGraphList);
 
+            // For debugging/testing purposes
+            // roomNodeGraph = currentDungeonLevel.roomNodeGraphList[5];
+
             int dungeonRebuildAttemptsForNodeGraph = 0;
             dungeonBuildSuccessful = false;
 
@@ -165,7 +168,7 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
                 openRoomNodeQueue.Enqueue(childRoomNode);
             }
 
-            // If the room is the entrnace mark as positioned and add to room dictionary
+            // If the room is the entrance, mark as positioned and add to room dictionary
             if (roomNode.roomNodeType.isEntrance)
             {
                 RoomTemplateSO roomTemplate = GetRandomRoomTemplate(roomNode.roomNodeType);
@@ -292,6 +295,9 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
     /// <returns>True if the room does NOT overlap, false otherwise</returns>
     private bool PlaceTheRoom(Room parentRoom, Doorway doorwayParent, Room room)
     {
+        // ENTRANCE, WEST DOORWAY, EW CORRIDOR
+
+
         // Get current room doorway position
         Doorway doorway = GetOppositeDoorway(doorwayParent, room.doorwayList);
 
@@ -455,7 +461,7 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
     /// <returns>True if overlapping on specific axis (x OR y, not x AND y), false otherwise</returns>
     private bool IsOverLappingInterval(int imin1, int imax1, int imin2, int imax2)
     {
-        if (Mathf.Max(imin1, imin2) <= Mathf.Min(imax2, imax2))
+        if (Mathf.Max(imin1, imin2) <= Mathf.Min(imax1, imax2))
         {
             return true;
         }
@@ -537,10 +543,13 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
         room.doorwayList = CopyDoorwayList(roomTemplate.doorwayList);
 
         // Set parent ID for room
-        if (roomNode.parentRoomNodeIDList.Count == 0) // Entrance
+        if (roomNode.parentRoomNodeIDList.Count == 0) // Is room the entrance room
         {
             room.parentRoomID = "";
             room.isPreviouslyVisited = true;
+
+            // Set entrance in game manager
+            GameManager.Instance.SetCurrentRoom(room);
         }
         else
         {
