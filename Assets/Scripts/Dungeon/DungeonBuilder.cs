@@ -543,10 +543,13 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
         room.doorwayList = CopyDoorwayList(roomTemplate.doorwayList);
 
         // Set parent ID for room
-        if (roomNode.parentRoomNodeIDList.Count == 0) // Entrance
+        if (roomNode.parentRoomNodeIDList.Count == 0) // Is room the entrance room
         {
             room.parentRoomID = "";
             room.isPreviouslyVisited = true;
+
+            // Set entrance in game manager
+            GameManager.Instance.SetCurrentRoom(room);
         }
         else
         {

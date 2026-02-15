@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     /// Initialize the player
     /// </summary>
     /// <param name="playerDetails"></param>
-    public void OnServerInitialized(PlayerDetailsSO playerDetails)
+    public void Initialize(PlayerDetailsSO playerDetails)
     {
         this.playerDetails = playerDetails;
 
