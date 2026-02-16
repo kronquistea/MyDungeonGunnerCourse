@@ -4,6 +4,94 @@ using UnityEngine;
 
 public static class HelperUtilities
 {
+    public static Camera mainCamera;
+
+    /// <summary>
+    /// Get the mouse world position
+    /// </summary>
+    /// <returns>World position of mouse</returns>
+    public static Vector3 GetMouseWorldPosition()
+    {
+        if (mainCamera == null)
+        {
+            // Available because we tagged the Main Camera in the Unity scene as "MainCamera"
+            mainCamera = Camera.main;
+        }
+
+        Vector3 mouseScreenPosition = Input.mousePosition;
+
+        // Clamp mouse position to screen size (get screen position of mouse to then convert to world position)
+        mouseScreenPosition.x = Mathf.Clamp(mouseScreenPosition.x, 0f, Screen.width);
+        mouseScreenPosition.y = Mathf.Clamp(mouseScreenPosition.y, 0f, Screen.height);
+
+        // Convert screen position to world position
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
+
+        // Set world position to 0 (no z-axis as this game is 2D).
+        worldPosition.z = 0f;
+
+        return worldPosition;
+    }
+
+    /// <summary>
+    /// Get the angle in degrees from a direction vector.
+    /// Unity calculates angle as 0* --> 180* from quadrant 1 to 2.
+    /// Then angle as 0* --> -180* from quadrant 4 to 3.
+    /// </summary>
+    /// <param name="vector"></param>
+    /// <returns>Calculate the angle between the player and the mouse cursor</returns>
+    public static float GetAngleFromVector(Vector3 vector)
+    {
+        // Get angle between player and mouse cursor using arctangent.
+        float radians = Mathf.Atan2(vector.y, vector.x);
+
+        // Convert radian angle to degrees
+        float degrees = radians * Mathf.Rad2Deg;
+
+        return degrees;
+    }
+
+    /// <summary>
+    /// Get AimDirection enum value from the passed in angleDegrees parameter
+    /// </summary>
+    /// <param name="angleDegrees"></param>
+    /// <returns>An AimDirection object based on the input angle</returns>
+    public static AimDirection GetAimDirection(float angleDegrees)
+    {
+        AimDirection aimDirection;
+
+        if (angleDegrees >= 22f && angleDegrees <= 67f)
+        {
+            aimDirection = AimDirection.UpRight;
+        }
+        else if (angleDegrees > 67f && angleDegrees <= 112f)
+        {
+            aimDirection = AimDirection.Up;
+        }
+        else if (angleDegrees > 112f && angleDegrees <= 158)
+        {
+            aimDirection = AimDirection.UpLeft;
+        }
+        else if ((angleDegrees <= 180f && angleDegrees > 158f) || (angleDegrees > -180f && angleDegrees <= -135f))
+        {
+            aimDirection = AimDirection.Left;
+        }
+        else if (angleDegrees > -135 && angleDegrees <= -45f)
+        {
+            aimDirection = AimDirection.Down;
+        }
+        else if (angleDegrees > -45f && angleDegrees < 22f)
+        {
+            aimDirection = AimDirection.Right;
+        }
+        else // Fallback case - will never be executed
+        {
+            aimDirection = AimDirection.Right;
+        }
+
+        return aimDirection;
+    }
+
     /// <summary>
     /// string empty check - returns true is string is empty
     /// </summary>
