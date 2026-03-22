@@ -169,12 +169,13 @@ public static class HelperUtilities
 
     /// <summary>
     /// Positive value debug check - if zero is allowed set isZeroAllowed to true
+    /// For ints
     /// </summary>
     /// <param name="thisObject"></param>
     /// <param name="fieldName"></param>
     /// <param name="valueToCheck"></param>
     /// <param name="isZeroAllowed"></param>
-    /// <returns>True if there is an error</returns>
+    /// <returns>True if error</returns>
     public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, int valueToCheck, bool isZeroAllowed)
     {
         bool error = false;
@@ -194,6 +195,71 @@ public static class HelperUtilities
                 Debug.Log(fieldName + " must contain a positive value in object " + thisObject.name.ToString());
                 error = true;
             }
+        }
+
+        return error;
+    }
+
+    /// <summary>
+    /// Positive value check - if zero is allowed set isZeroAllowed to true.
+    /// For floats
+    /// </summary>
+    /// <param name="thisObject"></param>
+    /// <param name="fieldName"></param>
+    /// <param name="valueToCheck"></param>
+    /// <param name="isZeroAllowed"></param>
+    /// <returns>True if error</returns>
+    public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, float valueToCheck, bool isZeroAllowed)
+    {
+        bool error = false;
+
+        if (isZeroAllowed)
+        {
+            if (valueToCheck < 0)
+            {
+                Debug.Log(fieldName + " must contain a positive value or zero in object " + thisObject.name.ToString());
+                error = true;
+            }
+        }
+        else
+        {
+            if (valueToCheck <= 0)
+            {
+                Debug.Log(fieldName + " must contain a positive value in object " + thisObject.name.ToString());
+                error = true;
+            }
+        }
+
+        return error;
+    }
+
+    /// <summary>
+    /// Positive range debug check - set isZeroAllowed to true if the min and max range values can both be zero.
+    /// </summary>
+    /// <param name="thisObject"></param>
+    /// <param name="fieldNameMinimum"></param>
+    /// <param name="valueToCheckMinimum"></param>
+    /// <param name="fieldNameMaximum"></param>
+    /// <param name="valueToCheckMaximum"></param>
+    /// <param name="isZeroAllowed"></param>
+    /// <returns>True if error</returns>
+    public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, float valueToCheckMinimum, string fieldNameMaximum, float valueToCheckMaximum, bool isZeroAllowed)
+    {
+        bool error = false;
+        if (valueToCheckMinimum > valueToCheckMaximum)
+        {
+            Debug.Log(fieldNameMinimum + " must be less than or equal to " + fieldNameMaximum + " in object " + thisObject.name.ToString());
+            error = true;
+        }
+
+        if (ValidateCheckPositiveValue(thisObject, fieldNameMinimum, valueToCheckMinimum, isZeroAllowed))
+        {
+            error = true;
+        }
+
+        if (ValidateCheckPositiveValue(thisObject, fieldNameMaximum, valueToCheckMaximum, isZeroAllowed))
+        {
+            error = true;
         }
 
         return error;
