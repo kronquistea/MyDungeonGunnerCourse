@@ -41,7 +41,7 @@ public class AimWeapon : MonoBehaviour
     /// <param name="aimWeaponEventArgs"></param>
     private void AimWeaponEvent_OnWeaponAim(AimWeaponEvent aimWeaponEvent, AimWeaponEventArgs aimWeaponEventArgs)
     {
-        Aim(aimWeaponEventArgs.aimDireciton, aimWeaponEventArgs.aimAngle);
+        Aim(aimWeaponEventArgs.aimDirection, aimWeaponEventArgs.aimAngle);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class AimWeapon : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        HelperUtilities.ValidateCheckNullValues(this, nameof(weaponRotationPointTransform), weaponRotationPointTransform);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(weaponRotationPointTransform), weaponRotationPointTransform);
     }
 #endif
     #endregion

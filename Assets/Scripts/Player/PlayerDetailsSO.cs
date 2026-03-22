@@ -52,11 +52,11 @@ public class PlayerDetailsSO : ScriptableObject
     private void OnValidate()
     {
         HelperUtilities.ValidateCheckEmptyString(this, nameof(playerCharacterName), playerCharacterName);
-        HelperUtilities.ValidateCheckNullValues(this, nameof(playerPrefab), playerPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(playerPrefab), playerPrefab);
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(playerHealthAmount), playerHealthAmount, false);
-        HelperUtilities.ValidateCheckNullValues(this, nameof(playerMiniMapIcon), playerMiniMapIcon);
-        HelperUtilities.ValidateCheckNullValues(this, nameof(playerHandSprite), playerHandSprite);
-        HelperUtilities.ValidateCheckNullValues(this, nameof(runtimeAnimatorController), runtimeAnimatorController);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(playerMiniMapIcon), playerMiniMapIcon);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(playerHandSprite), playerHandSprite);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(runtimeAnimatorController), runtimeAnimatorController);
     }
 #endif
     #endregion

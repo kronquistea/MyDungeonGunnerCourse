@@ -117,7 +117,7 @@ public static class HelperUtilities
     /// <param name="fieldName"></param>
     /// <param name="objectToCheck"></param>
     /// <returns>True if objectToCheck is null, false otherwise</returns>
-    public static bool ValidateCheckNullValues(Object thisObject, string fieldName, UnityEngine.Object objectToCheck)
+    public static bool ValidateCheckNullValue(Object thisObject, string fieldName, UnityEngine.Object objectToCheck)
     {
         if (objectToCheck == null)
         {

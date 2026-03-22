@@ -51,7 +51,7 @@ public class AnimatePlayer : MonoBehaviour
     {
         InitializeAimAnimationParameters();
 
-        SetAimWeaponAnimationParameters(aimWeaponEventArgs.aimDireciton);
+        SetAimWeaponAnimationParameters(aimWeaponEventArgs.aimDirection);
     }
 
     /// <summary>
