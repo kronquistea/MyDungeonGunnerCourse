@@ -18,11 +18,12 @@ public static class HelperUtilities
             mainCamera = Camera.main;
         }
 
+        // Returns and assigns current screen position of the mouse
         Vector3 mouseScreenPosition = Input.mousePosition;
 
         // Clamp mouse position to screen size (get screen position of mouse to then convert to world position)
-        mouseScreenPosition.x = Mathf.Clamp(mouseScreenPosition.x, 0f, Screen.width);
-        mouseScreenPosition.y = Mathf.Clamp(mouseScreenPosition.y, 0f, Screen.height);
+        mouseScreenPosition.x = Mathf.Clamp(mouseScreenPosition.x, 0f, Screen.width); // x-component (width)
+        mouseScreenPosition.y = Mathf.Clamp(mouseScreenPosition.y, 0f, Screen.height); // y-component (height)
 
         // Convert screen position to world position
         Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
