@@ -225,31 +225,41 @@ public class InstantiatedRoom : MonoBehaviour
 
                 GameObject door = null;
 
-                // Create door with parent as the room
-                door = Instantiate(doorway.doorPrefab, gameObject.transform);
                 if (doorway.orientation == Orientation.north)
                 {
                     // Create door with parent as the room
-                    // door = Instantiate(doorway.doorPrefab, gameObject.transform);
+                    door = Instantiate(doorway.doorPrefab, gameObject.transform);
                     door.transform.localPosition = new Vector3(doorway.position.x + tileDistance / 2f, doorway.position.y + tileDistance, 0f);
                 }
                 else if (doorway.orientation == Orientation.south)
                 {
                     // Create door with parent as the room
-                    // door = Instantiate(doorway.doorPrefab, gameObject.transform);
+                    door = Instantiate(doorway.doorPrefab, gameObject.transform);
                     door.transform.localPosition = new Vector3(doorway.position.x + tileDistance / 2f, doorway.position.y, 0f);
                 }
                 else if (doorway.orientation == Orientation.east)
                 {
                     // Create door with parent as the room
-                    // door = Instantiate(doorway.doorPrefab, gameObject.transform);
+                    door = Instantiate(doorway.doorPrefab, gameObject.transform);
                     door.transform.localPosition = new Vector3(doorway.position.x + tileDistance, doorway.position.y + tileDistance * 1.25f, 0f);
                 }
                 else if (doorway.orientation == Orientation.west)
                 {
                     // Create door with parent as the room
-                    // door = Instantiate(doorway.doorPrefab, gameObject.transform);
+                    door = Instantiate(doorway.doorPrefab, gameObject.transform);
                     door.transform.localPosition = new Vector3(doorway.position.x, doorway.position.y + tileDistance * 1.25f, 0f);
+                }
+
+                // Get door component
+                Door doorComponent = door.GetComponent<Door>();
+
+                // Set if door is part of a boss room
+                if (room.roomNodeType.isBossRoom)
+                {
+                    doorComponent.isBossRoomDoor = true;
+
+                    // Lock the door to prevent access to the room
+                    doorComponent.LockDoor();
                 }
             }
         }
