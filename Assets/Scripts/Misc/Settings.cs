@@ -15,6 +15,7 @@ public static class Settings
     #endregion
 
     #region ROOM SETTINGS
+    public const float fadeInTime = 0.5f; // Time to fade in the room
     public const int maxChildCorridors = 3; // Max number of child corridors leading FROM a room.
     #endregion
 

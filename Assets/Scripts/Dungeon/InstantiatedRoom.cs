@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[DisallowMultipleComponent]
 [RequireComponent(typeof(BoxCollider2D))]
+[DisallowMultipleComponent]
+
 public class InstantiatedRoom : MonoBehaviour
 {
     [HideInInspector] public Room room; // Hold corresponding room object that this instantiated room relates to
@@ -25,6 +26,23 @@ public class InstantiatedRoom : MonoBehaviour
 
         // Save room collider bounds
         roomColliderBounds = boxCollider2D.bounds;
+    }
+
+    /// <summary>
+    /// Trigger room changed event when player enters a room
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // If the player triggered the collider
+        if (collision.tag == Settings.playerTag && room != GameManager.Instance.GetCurrentRoom())
+        {
+            // Set room as visited
+            this.room.isPreviouslyVisited = true;
+
+            // Call room changed event
+            StaticEventHandler.CallRoomChangedEvent(room);
+        }
     }
 
     /// <summary>
