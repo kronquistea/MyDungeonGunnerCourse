@@ -52,6 +52,27 @@ public class GameManager : SingletonMonobehavior<GameManager>
         player.Initialize(playerDetails);
     }
 
+    private void OnEnable()
+    {
+        // Subscribe to room changed event
+        StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
+    }
+
+    private void OnDisable()
+    {
+        // Unsunscribe from room changed event
+        StaticEventHandler.OnRoomChanged -= StaticEventHandler_OnRoomChanged;
+    }
+
+    /// <summary>
+    /// Handle room changed event
+    /// </summary>
+    /// <param name="roomChangedEventArgs"></param>
+    private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
+    {
+        SetCurrentRoom(roomChangedEventArgs.room);
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
