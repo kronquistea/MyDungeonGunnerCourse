@@ -1117,10 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab670008648c3e443b5c3ed473ae52df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolArray:
-  - poolSize: 30
-    prefab: {fileID: 1064848425347450301, guid: 3502ff59d0b6e3e498ff34b82a0d377f, type: 3}
-    componentType: EnemyAnimation
+  poolArray: []
 --- !u!4 &2084425195
 Transform:
   m_ObjectHideFlags: 0
