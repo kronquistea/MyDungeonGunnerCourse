@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
+[DisallowMultipleComponent]
+
 public class PlayerControl : MonoBehaviour
 {
     #region Tooltip
@@ -8,12 +11,8 @@ public class PlayerControl : MonoBehaviour
     #endregion
     [SerializeField] private MovementDetailsSO movementDetails;
 
-    #region Tooltip
-    [Tooltip("The player WeaponShootPosition gameobject in the hierarchy")]
-    #endregion
-    [SerializeField] private Transform weaponShootPosition;
-
     private Player player;
+    private int currentWeaponIndex = 1;
     private float moveSpeed;
     private Coroutine playerRollCoroutine;
     private WaitForFixedUpdate waitForFixedUpdate;
@@ -33,8 +32,29 @@ public class PlayerControl : MonoBehaviour
         // Create waitForFixedUpdate for use in coroutine
         waitForFixedUpdate = new WaitForFixedUpdate();
 
+        // Set starting weapon
+        SetStartingWeapon();
+
         // Set player animation speed
         SetPlayerAnimationSpeed();
+    }
+
+    /// <summary>
+    /// Set the player starting weapon
+    /// </summary>
+    private void SetStartingWeapon()
+    {
+        int index = 1;
+
+        foreach (Weapon weapon in player.weaponList)
+        {
+            if (weapon.weaponDetails == player.playerDetails.startingWeapon)
+            {
+                SetWeaponByIndex(index);
+                break;
+            }
+            index++;
+        }
     }
 
     /// <summary>
@@ -180,7 +200,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 mouseWorldPosition = HelperUtilities.GetMouseWorldPosition();
 
         // Calculate direction vector of mouse cursor from weapon shoot position
-        weaponDirection = (mouseWorldPosition - weaponShootPosition.position);
+        weaponDirection = (mouseWorldPosition - player.activeWeapon.GetShootPosition());
 
         // Calculate direction vector of mouse cursor from player transform position
         Vector3 playerDirection = (mouseWorldPosition - transform.position);
@@ -196,6 +216,19 @@ public class PlayerControl : MonoBehaviour
 
         // Trigger weapon aim event
         player.aimWeaponEvent.CallAimWeaponEvent(playerAimDirection, playerAngleDegrees, weaponAngleDegrees, weaponDirection);
+    }
+
+    /// <summary>
+    /// Set the currentWeaponIndex via the parameter and publish a OnSetActiveWeaponEvent
+    /// </summary>
+    /// <param name="weaponIndex"></param>
+    private void SetWeaponByIndex(int weaponIndex)
+    {
+        if (weaponIndex - 1 < player.weaponList.Count)
+        {
+            currentWeaponIndex = weaponIndex;
+            player.setActiveWeaponEvent.CallSetActiveWeaponEvent(player.weaponList[weaponIndex - 1]);
+        }
     }
 
     /// <summary>

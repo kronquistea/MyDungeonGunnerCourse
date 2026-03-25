@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4555049756463770021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.125, y: 0, z: 0}
+  m_LocalPosition: {x: -0.15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8843436038794848229}
@@ -137,7 +137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8843436038794848250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.688, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2195584735051496327}
@@ -202,6 +202,8 @@ GameObject:
   - component: {fileID: -8702978951169331344}
   - component: {fileID: -2340546287784196884}
   - component: {fileID: 8683652294803601524}
+  - component: {fileID: 5405229812004329487}
+  - component: {fileID: 1063586987492528255}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -421,6 +423,7 @@ MonoBehaviour:
   movementToPositionEvent: {fileID: 0}
   idleEvent: {fileID: 0}
   aimWeaponEvent: {fileID: 0}
+  setActiveWeaponEvent: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
 --- !u!114 &9156760204405686515
@@ -546,6 +549,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7532e9eedc0cce4aaff227a00de965f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5405229812004329487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843436039348130292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a2663f9d8717645b91884d73ef27a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1063586987492528255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843436039348130292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13d93734b5763a498444fdfdbc35197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpriteRenderer: {fileID: 8843436039407275037}
+  weaponPolygonCollider2D: {fileID: 8843436039407275026}
+  weaponShootPositionTransform: {fileID: 8843436038794848229}
+  weaponEffectPositionTransform: {fileID: 2195584735051496327}
 --- !u!1 &8843436039407275024
 GameObject:
   m_ObjectHideFlags: 0
