@@ -66,6 +66,13 @@ public class PlayerControl : MonoBehaviour
         player.animator.speed = moveSpeed / Settings.baseSpeedForPlayerAnimations;
     }
 
+    /// <summary>
+    /// Run this function on every frame update
+    /// Do nothing if rolling
+    /// Move the player (or not, up to the MovementInput method)
+    /// Shoot the gun (or not, up to the WeaponInput method)
+    /// Reduce the roll cooldown timer (or not, up to the PlayerRollColldownTimer method)
+    /// </summary>
     private void Update()
     {
         // If player is rolling then return
@@ -185,6 +192,9 @@ public class PlayerControl : MonoBehaviour
 
         // Aim weapon input - out parameters so we can get these values back for future processing
         AimWeaponInput(out weaponDirection, out weaponAngleDegrees, out playerAngleDegrees, out playerAimDirection);
+
+        // Fire weapon input
+        FireWeaponInput(weaponDirection, weaponAngleDegrees, playerAngleDegrees, playerAimDirection);
     }
 
     /// <summary>
@@ -216,6 +226,23 @@ public class PlayerControl : MonoBehaviour
 
         // Trigger weapon aim event
         player.aimWeaponEvent.CallAimWeaponEvent(playerAimDirection, playerAngleDegrees, weaponAngleDegrees, weaponDirection);
+    }
+
+    /// <summary>
+    /// Calculate and handle weapon fire
+    /// </summary>
+    /// <param name="weaponDirection"></param>
+    /// <param name="weaponAngleDegrees"></param>
+    /// <param name="playerAngleDegrees"></param>
+    /// <param name="playerAimDirection"></param>
+    private void FireWeaponInput(Vector3 weaponDirection, float weaponAngleDegrees, float playerAngleDegrees, AimDirection playerAimDirection)
+    {
+        // Fire when LMB is clicked
+        if (Input.GetMouseButton(0))
+        {
+            // Trigger fire weapon event
+            player.fireWeaponEvent.CallFireWeaponEvent(true, playerAimDirection, playerAngleDegrees, weaponAngleDegrees, weaponDirection);
+        }
     }
 
     /// <summary>
