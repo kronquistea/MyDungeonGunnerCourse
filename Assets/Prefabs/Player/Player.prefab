@@ -207,6 +207,9 @@ GameObject:
   - component: {fileID: 5909156574597619064}
   - component: {fileID: 7743237868793588839}
   - component: {fileID: 378682166585884037}
+  - component: {fileID: 3852926258531551132}
+  - component: {fileID: 3242741251671641259}
+  - component: {fileID: 9195085234579926082}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -430,6 +433,8 @@ MonoBehaviour:
   setActiveWeaponEvent: {fileID: 0}
   activeWeapon: {fileID: 0}
   weaponFiredEvent: {fileID: 0}
+  reloadWeaponEvent: {fileID: 0}
+  weaponReloadedEvent: {fileID: 0}
   spriteRenderer: {fileID: 0}
   animator: {fileID: 0}
 --- !u!114 &9156760204405686515
@@ -616,6 +621,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df824fc9e99bd194898f7c51d64026c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3852926258531551132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843436039348130292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3654fef4bdf976c4fac8fe39a1261569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3242741251671641259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843436039348130292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d045fdf774bea7478c967cf7ad32e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9195085234579926082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843436039348130292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7aa6af9d40962343bbfef64a5835878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8843436039407275024

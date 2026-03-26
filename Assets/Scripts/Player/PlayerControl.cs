@@ -195,6 +195,9 @@ public class PlayerControl : MonoBehaviour
 
         // Fire weapon input
         FireWeaponInput(weaponDirection, weaponAngleDegrees, playerAngleDegrees, playerAimDirection);
+
+        // Reload weapon input
+        ReloadWeaponInput();
     }
 
     /// <summary>
@@ -242,6 +245,39 @@ public class PlayerControl : MonoBehaviour
         {
             // Trigger fire weapon event
             player.fireWeaponEvent.CallFireWeaponEvent(true, playerAimDirection, playerAngleDegrees, weaponAngleDegrees, weaponDirection);
+        }
+    }
+
+    /// <summary>
+    /// Handle reload weapon input
+    /// </summary>
+    private void ReloadWeaponInput()
+    {
+        Weapon currentWeapon = player.activeWeapon.GetCurrentWeapon();
+
+        // If current weapon is reloading, return
+        if (currentWeapon.isWeaponReloading)
+        {
+            return;
+        }
+
+        // If remaining ammo is less than clip capacity and not infinite ammo then return
+        if (currentWeapon.weaponRemainingAmmo < currentWeapon.weaponDetails.weaponClipAmmoCapacity && !currentWeapon.weaponDetails.hasInfiniteAmmo)
+        {
+            return;
+        }
+
+        // If ammo in clip equals clip capacity (clip is full) then return
+        if (currentWeapon.weaponClipRemainingAmmo == currentWeapon.weaponDetails.weaponClipAmmoCapacity)
+        {
+            return;
+        }
+
+        // Handle weapon reloading if R key is pressed down
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            // Call reload weapon event
+            player.reloadWeaponEvent.CallReloadWeaponEvent(currentWeapon, 0);
         }
     }
 

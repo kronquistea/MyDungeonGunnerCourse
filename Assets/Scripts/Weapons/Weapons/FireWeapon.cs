@@ -3,6 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(ActiveWeapon))]
 [RequireComponent(typeof(FireWeaponEvent))]
+[RequireComponent(typeof(ReloadWeaponEvent))]
 [RequireComponent(typeof(WeaponFiredEvent))]
 [DisallowMultipleComponent]
 
@@ -11,6 +12,7 @@ public class FireWeapon : MonoBehaviour
     private float fireRateCooldownTimer = 0f; // In WeaponDetailsSO we defined how often a weapon can be fired
     private ActiveWeapon activeWeapon;
     private FireWeaponEvent fireWeaponEvent;
+    private ReloadWeaponEvent reloadWeaponEvent;
     private WeaponFiredEvent weaponFiredEvent;
 
     private void Awake()
@@ -18,6 +20,7 @@ public class FireWeapon : MonoBehaviour
         // Load components
         activeWeapon = GetComponent<ActiveWeapon>();
         fireWeaponEvent = GetComponent<FireWeaponEvent>();
+        reloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
         weaponFiredEvent = GetComponent<WeaponFiredEvent>();
     }
 
@@ -76,7 +79,7 @@ public class FireWeapon : MonoBehaviour
     {
         Weapon currentWeapon = activeWeapon.GetCurrentWeapon();
 
-        // If there is no ammo and weapon doesn't have infinite ammo then return false
+        // If there is no ammo (total ammo for the gun) and weapon doesn't have infinite ammo then return false
         if (currentWeapon.weaponRemainingAmmo <= 0 && !currentWeapon.weaponDetails.hasInfiniteAmmo)
         {
             return false;
@@ -97,6 +100,9 @@ public class FireWeapon : MonoBehaviour
         // If no ammo in the clip and the weapon doesn't have infinte clip capacity then return false
         if (!currentWeapon.weaponDetails.hasInfiniteClipCapacity && currentWeapon.weaponClipRemainingAmmo <= 0)
         {
+            // Trigger a reload weapon event
+            reloadWeaponEvent.CallReloadWeaponEvent(currentWeapon, 0);
+
             return false;
         }
 
