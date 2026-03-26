@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class FireWeapon : MonoBehaviour
 {
+    private float firePrechargeTimer = 0f;
     private float fireRateCooldownTimer = 0f; // In WeaponDetailsSO we defined how often a weapon can be fired
     private ActiveWeapon activeWeapon;
     private FireWeaponEvent fireWeaponEvent;
@@ -58,6 +59,9 @@ public class FireWeapon : MonoBehaviour
     /// <param name="fireWeaponEventArgs"></param>
     private void WeaponFire(FireWeaponEventArgs fireWeaponEventArgs)
     {
+        // Handle weapon precharge timer
+        WeaponPrecharge(fireWeaponEventArgs);
+
         // Weapon fire
         if (fireWeaponEventArgs.fire)
         {
@@ -67,7 +71,27 @@ public class FireWeapon : MonoBehaviour
                 FireAmmo(fireWeaponEventArgs.aimAngle, fireWeaponEventArgs.weaponAimAngle, fireWeaponEventArgs.weaponAimDirectionVector);
 
                 ResetCooldownTimer();
+
+                ResetPrechargeTimer();
             }
+        }
+    }
+
+    /// <summary>
+    /// Handle weapon precharge
+    /// </summary>
+    /// <param name="fireWeaponEventArgs"></param>
+    private void WeaponPrecharge(FireWeaponEventArgs fireWeaponEventArgs)
+    {
+        // Weapon precharge handling
+        if (fireWeaponEventArgs.firePreviousFrame)
+        {
+            // Decrease precharge timer if fire button held previous frame
+            firePrechargeTimer -= Time.deltaTime;
+        }
+        else
+        {
+            ResetPrechargeTimer();
         }
     }
 
@@ -91,8 +115,8 @@ public class FireWeapon : MonoBehaviour
             return false;
         }
 
-        // If the weapon cooling down then return false
-        if (fireRateCooldownTimer > 0f)
+        // If the weapon is not fully precharged (ex. laser guns) or is cooling down then return false
+        if (firePrechargeTimer > 0f || fireRateCooldownTimer > 0f)
         {
             return false;
         }
@@ -153,5 +177,13 @@ public class FireWeapon : MonoBehaviour
     {
         // Reset cooldown timer
         fireRateCooldownTimer = activeWeapon.GetCurrentWeapon().weaponDetails.weaponFireRate;
+    }
+
+    /// <summary>
+    /// Reset precharge timer
+    /// </summary>
+    private void ResetPrechargeTimer()
+    {
+        firePrechargeTimer = activeWeapon.GetCurrentWeapon().weaponDetails.weaponPrechargeTime;
     }
 }
