@@ -327,8 +327,19 @@ public class WeaponStatusUI : MonoBehaviour
     /// <param name="weapon"></param>
     private void UpdateReloadText(Weapon weapon)
     {
+        // If the weapon has a finite clip capacity and a finite ammo amount but has not ammo left, show OUT OF AMMO text
+        if (!weapon.weaponDetails.hasInfiniteClipCapacity && !weapon.weaponDetails.hasInfiniteAmmo && weapon.weaponRemainingAmmo == 0)
+        {
+            // Set reload bar color to red
+            barImage.color = Color.red;
+
+            // Ensure there is no RELOAD ammo coroutine running
+            StopBlinkingReloadText();
+
+            reloadText.text = "OUT OF AMMO";
+        }
         // If the weapon has a finite clip capacity and has no ammo left or is reloading, show blinking RELOAD text
-        if ((!weapon.weaponDetails.hasInfiniteClipCapacity) && (weapon.weaponClipRemainingAmmo <= 0 || weapon.isWeaponReloading))
+        else if ((!weapon.weaponDetails.hasInfiniteClipCapacity) && (weapon.weaponClipRemainingAmmo <= 0 || weapon.isWeaponReloading))
         {
             // Set reload bar color to red
             barImage.color = Color.red;
