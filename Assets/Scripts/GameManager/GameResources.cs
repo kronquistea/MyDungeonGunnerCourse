@@ -55,15 +55,32 @@ public class GameResources : MonoBehaviour
     #endregion
     public Shader variableLitShader;
 
+    #region Header UI
+    [Space(10)]
+    [Header("UI")]
+    #endregion
+    #region Tooltip
+    [Tooltip("Populate with ammo icon prefab")]
+    #endregion
+    public GameObject ammoIconPrefab;
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
     {
+        //DUNGEON
         HelperUtilities.ValidateCheckNullValue(this, nameof(roomNodeTypeList), roomNodeTypeList);
+        
+        // PLAYER
         HelperUtilities.ValidateCheckNullValue(this, nameof(currentPlayer), currentPlayer);
-        HelperUtilities.ValidateCheckNullValue(this, nameof(litMaterial), litMaterial);
+
+        // MATERIALS
         HelperUtilities.ValidateCheckNullValue(this, nameof(dimmedMaterial), dimmedMaterial);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(litMaterial), litMaterial);
         HelperUtilities.ValidateCheckNullValue(this, nameof(variableLitShader), variableLitShader);
+
+        // UI
+        HelperUtilities.ValidateCheckNullValue(this, nameof(ammoIconPrefab), ammoIconPrefab);
     }
 #endif
     #endregion

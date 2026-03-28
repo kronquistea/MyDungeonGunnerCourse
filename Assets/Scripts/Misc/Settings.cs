@@ -50,4 +50,8 @@ public static class Settings
     // otherwise weapon aim angle will be used (calculated from weapon shoot positon).
     public const float useAimAngleDistance = 3.5f; // Unity units
     #endregion
+
+    #region UI PARAMETERS
+    public const float uiAmmoIconSpacing = 4f;
+    #endregion
 }
