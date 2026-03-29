@@ -8,7 +8,6 @@ public class AmmoDetailsSO : ScriptableObject
     [Space(10)]
     [Header("BASIC AMMO DETAILS")]
     #endregion
-
     #region Tooltip
     [Tooltip("Name of the ammo")]
     #endregion
@@ -20,7 +19,6 @@ public class AmmoDetailsSO : ScriptableObject
     [Space(10)]
     [Header("AMMO SPRITE, PREFAB & MATERIALS")]
     #endregion
-    
     #region Tooltip
     [Tooltip("Sprite to be used for the ammo")]
     #endregion
@@ -51,7 +49,6 @@ public class AmmoDetailsSO : ScriptableObject
     [Space(10)]
     [Header("AMMO BASE PARAMETERS")]
     #endregion
-
     #region Tooltip
     [Tooltip("The damage each ammo deals")]
     #endregion
@@ -81,7 +78,6 @@ public class AmmoDetailsSO : ScriptableObject
     [Space(10)]
     [Header("AMMO SPREAD DETAILS")]
     #endregion
-
     #region Tooltip
     [Tooltip("This is the minimum spread angle of the ammo. A higher spread means less accuracy. A random spread is calculated" +
         " between the min and the max values")]
@@ -98,7 +94,6 @@ public class AmmoDetailsSO : ScriptableObject
     [Space(10)]
     [Header("AMMO SPAWN DETAILS")]
     #endregion
-
     #region Tooltip
     [Tooltip("This is the minimum number of ammo that are spawn per shot. A random number of ammo are spawned between the minimum and maximum values")]
     #endregion
@@ -125,7 +120,6 @@ public class AmmoDetailsSO : ScriptableObject
     [Space(10)]
     [Header("AMMO TRAIL DETAILS")]
     #endregion
-
     #region Tooltip
     [Tooltip("Selected if an ammo trail is required, otherwise deselect. If selected then the rest of the ammo trail values should be populated.")]
     #endregion
