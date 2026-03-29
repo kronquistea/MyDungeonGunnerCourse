@@ -272,20 +272,15 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        // If remaining ammo is less than clip capacity and not infinite ammo then return
-        if (currentWeapon.weaponRemainingAmmo < currentWeapon.weaponDetails.weaponClipAmmoCapacity && !currentWeapon.weaponDetails.hasInfiniteAmmo)
-        {
-            return;
-        }
-
         // If ammo in clip equals clip capacity (clip is full) then return
         if (currentWeapon.weaponClipRemainingAmmo == currentWeapon.weaponDetails.weaponClipAmmoCapacity)
         {
             return;
         }
 
-        // Handle weapon reloading if R key is pressed down
-        if (Input.GetKeyDown(KeyCode.R))
+        // If the R key is pressed and the clip size is less than the amount of ammo availalbe and the gun does not have infinite handle, allow manual reload
+        // Example, MP7 has 4 bullets left in clip BUT MP7 only has 17 available bullets, with old code the player could not press R to reload manually due to old if statement
+        if (Input.GetKeyDown(KeyCode.R) && currentWeapon.weaponClipRemainingAmmo != currentWeapon.weaponRemainingAmmo)
         {
             // Call reload weapon event
             player.reloadWeaponEvent.CallReloadWeaponEvent(currentWeapon, 0);

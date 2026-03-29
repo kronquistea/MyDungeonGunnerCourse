@@ -49,6 +49,7 @@ public class WeaponStatusUI : MonoBehaviour
     private List<GameObject> ammoIconList = new List<GameObject>();
     private Coroutine reloadWeaponCoroutine;
     private Coroutine blinkingReloadTextCoroutine;
+    private Coroutine blinkingOutOfAmmoTextCoroutine;
 
     private void Awake()
     {
@@ -333,10 +334,10 @@ public class WeaponStatusUI : MonoBehaviour
             // Set reload bar color to red
             barImage.color = Color.red;
 
-            // Ensure there is no RELOAD ammo coroutine running
-            StopBlinkingReloadText();
+            StopBlinkingOutOfAmmoTextCoroutine();
+            StopBlinkingReloadTextCoroutine();
 
-            reloadText.text = "OUT OF AMMO";
+            blinkingOutOfAmmoTextCoroutine = StartCoroutine(StartBlinkingOutOfAmmoTextCoroutine());
         }
         // If the weapon has a finite clip capacity and has no ammo left or is reloading, show blinking RELOAD text
         else if ((!weapon.weaponDetails.hasInfiniteClipCapacity) && (weapon.weaponClipRemainingAmmo <= 0 || weapon.isWeaponReloading))
@@ -344,6 +345,7 @@ public class WeaponStatusUI : MonoBehaviour
             // Set reload bar color to red
             barImage.color = Color.red;
 
+            StopBlinkingOutOfAmmoTextCoroutine();
             StopBlinkingReloadTextCoroutine();
 
             blinkingReloadTextCoroutine = StartCoroutine(StartBlinkingReloadTextCoroutine());
@@ -351,7 +353,45 @@ public class WeaponStatusUI : MonoBehaviour
         // If the weapon has an infinite clip capcity or has ammo left and is not reloading, stop blinking RELOAD text
         else
         {
+            StopBlinkingOutOfAmmoTextCoroutine();
             StopBlinkingReloadText();
+        }
+    }
+
+    /// <summary>
+    /// Start the coroutine to blink the out of ammo weapon text on and off for 0.3 seconds at a time
+    /// </summary>
+    /// <returns>Coroutine to blink OUT OF AMMO text</returns>
+    private IEnumerator StartBlinkingOutOfAmmoTextCoroutine()
+    {
+        while (true)
+        {
+            reloadText.text = "OUT OF AMMO";
+            yield return new WaitForSeconds(0.3f);
+            reloadText.text = "";
+            yield return new WaitForSeconds(0.3f);
+        }
+    }
+
+
+    /// <summary>
+    /// Stop the blinking out of ammo text (coroutine) and reset the text to empty string
+    /// </summary>
+    private void StopBlinkingOutOfAmmoText()
+    {
+        StopBlinkingOutOfAmmoTextCoroutine();
+
+        reloadText.text = "";
+    }
+
+    /// <summary>
+    /// Stop the blinking out of ammo text coroutine
+    /// </summary>
+    private void StopBlinkingOutOfAmmoTextCoroutine()
+    {
+        if (blinkingOutOfAmmoTextCoroutine != null)
+        {
+            StopCoroutine(blinkingOutOfAmmoTextCoroutine);
         }
     }
 
