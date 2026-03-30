@@ -46,6 +46,11 @@ public class GameResources : MonoBehaviour
     #endregion
     public AudioMixerGroup soundsMasterMixerGroup;
 
+    #region Tooltip
+    [Tooltip("Door open close sound effect")]
+    #endregion
+    public SoundEffectSO doorOpenCloseSoundEffect;
+
     #region Header MATERIALS
     [Space(10)]
     [Header("Materials")]
@@ -83,6 +88,10 @@ public class GameResources : MonoBehaviour
         
         // PLAYER
         HelperUtilities.ValidateCheckNullValue(this, nameof(currentPlayer), currentPlayer);
+
+        // SOUNDS
+        HelperUtilities.ValidateCheckNullValue(this, nameof(soundsMasterMixerGroup), soundsMasterMixerGroup);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(doorOpenCloseSoundEffect), doorOpenCloseSoundEffect);
 
         // MATERIALS
         HelperUtilities.ValidateCheckNullValue(this, nameof(dimmedMaterial), dimmedMaterial);
