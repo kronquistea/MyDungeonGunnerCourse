@@ -207,6 +207,9 @@ public class FireWeapon : MonoBehaviour
 
         // Call weapon fired event
         weaponFiredEvent.CallWeaponFiredEvent(activeWeapon.GetCurrentWeapon());
+
+        // Weapon fired sound effect
+        WeaponSoundEffect();
     }
 
     /// <summary>
@@ -224,5 +227,16 @@ public class FireWeapon : MonoBehaviour
     private void ResetPrechargeTimer()
     {
         firePrechargeTimer = activeWeapon.GetCurrentWeapon().weaponDetails.weaponPrechargeTime;
+    }
+
+    /// <summary>
+    /// Play weapon shooting sound effect
+    /// </summary>
+    private void WeaponSoundEffect()
+    {
+        if (activeWeapon.GetCurrentWeapon().weaponDetails.weaponFiringSoundEffect != null)
+        {
+            SoundEffectManager.Instance.PlaySoundEffect(activeWeapon.GetCurrentWeapon().weaponDetails.weaponFiringSoundEffect);
+        }
     }
 }

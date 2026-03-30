@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8a55cf1feff2884a8cc5ddc90ea365b, type: 3}
-  m_Name: WeaponDetails_GM6LynxSniper
+  m_Name: WeaponDetails_Shotgun
   m_EditorClassIdentifier: 
-  weaponName: GM6 Lynx Sniper
-  weaponSprite: {fileID: 21300000, guid: 7e70ae1621ea16746be436ae77e38ce9, type: 3}
-  weaponShootPosition: {x: 1.678, y: 0.234, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: 498454d9be9420b429d3a67ff356f8dd, type: 2}
-  weaponFiringSoundEffect: {fileID: 11400000, guid: cbd8f58686897ae4fb760b429d0f8dd2, type: 2}
-  weaponReloadingSoundEffect: {fileID: 11400000, guid: bcda0acd7e32ff2499fb683a9ac45e60, type: 2}
+  weaponName: Shotgun
+  weaponSprite: {fileID: 21300000, guid: 957e7c5a4532c7b4fa28cd31bf5aee5d, type: 3}
+  weaponShootPosition: {x: 1.376, y: 0.208, z: 0}
+  weaponCurrentAmmo: {fileID: 11400000, guid: c8ca819377150a84dbfb124c47aeb1ae, type: 2}
+  weaponFiringSoundEffect: {fileID: 11400000, guid: 670a275c7256257418d072b7a1436da2, type: 2}
+  weaponReloadingSoundEffect: {fileID: 11400000, guid: 03b8453561a5c264487a1cb086fac148, type: 2}
   hasInfiniteAmmo: 0
   hasInfiniteClipCapacity: 0
   weaponClipAmmoCapacity: 4
   weaponAmmoCapacity: 30
   weaponFireRate: 0.4
   weaponPrechargeTime: 0
-  weaponReloadTime: 2
+  weaponReloadTime: 1
