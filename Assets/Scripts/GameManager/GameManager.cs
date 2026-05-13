@@ -165,6 +165,15 @@ public class GameManager : SingletonMonobehavior<GameManager>
         return player;
     }
 
+    /// <summary>
+    /// Get the player minimap icon
+    /// </summary>
+    /// <returns></returns>
+    public Sprite GetPlayerMiniMapIcon()
+    {
+        return playerDetails.playerMiniMapIcon;
+    }
+
     #region Validation
 #if UNITY_EDITOR
     private void OnValidate()
