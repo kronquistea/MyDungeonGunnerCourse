@@ -2908,12 +2908,24 @@ MonoBehaviour:
   - poolSize: 30
     prefab: {fileID: 5543280562518253747, guid: 5eb447b6ad1858e43a1bcf85e7c2db7a, type: 3}
     componentType: IFireable
-  - poolSize: 40
-    prefab: {fileID: 6038739412233203418, guid: 174a538ac832e0645be690f394963f1f, type: 3}
-    componentType: SoundEffect
   - poolSize: 10
     prefab: {fileID: 5543280562518253747, guid: f909b8fb9a7034d48b554611f4f9d1d0, type: 3}
     componentType: IFireable
+  - poolSize: 40
+    prefab: {fileID: 6038739412233203418, guid: 174a538ac832e0645be690f394963f1f, type: 3}
+    componentType: SoundEffect
+  - poolSize: 20
+    prefab: {fileID: 7006965435011414202, guid: f21e1e7bc9945c541b7dc06de02732a7, type: 3}
+    componentType: WeaponShootEffect
+  - poolSize: 20
+    prefab: {fileID: 899998294173253778, guid: 367732c18a946864495d1ce4a993f303, type: 3}
+    componentType: WeaponShootEffect
+  - poolSize: 20
+    prefab: {fileID: 8369389153069631736, guid: dc599fb1481a5ef4a82d874e88d230d0, type: 3}
+    componentType: WeaponShootEffect
+  - poolSize: 20
+    prefab: {fileID: 899998294173253778, guid: ffdba3ece955d0642b050fdde145dfd1, type: 3}
+    componentType: AmmoHitEffect
 --- !u!4 &2084425195
 Transform:
   m_ObjectHideFlags: 0
