@@ -71,6 +71,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slizzard
       objectReference: {fileID: 0}
+    - target: {fileID: 5244986905401143271, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 34e8d9a39874e5e4dafae7864069e02b, type: 2}
     - target: {fileID: 5689307560881307245, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.75
