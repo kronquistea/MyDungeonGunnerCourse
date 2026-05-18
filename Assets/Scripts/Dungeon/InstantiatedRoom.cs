@@ -16,7 +16,7 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap frontTilemap;
     [HideInInspector] public Tilemap collisionTilemap;
     [HideInInspector] public Tilemap minimapTilemap;
-    [HideInInspector] public int[,] aStarMovementPenality; // Use this 2D array to store movement penalties from the tilemaps to be used in AStar pathfinding
+    [HideInInspector] public int[,] aStarMovementPenalty; // Use this 2D array to store movement penalties from the tilemaps to be used in AStar pathfinding
     [HideInInspector] public Bounds roomColliderBounds;
 
     private BoxCollider2D boxCollider2D;
@@ -56,7 +56,7 @@ public class InstantiatedRoom : MonoBehaviour
 
         BlockOffUnusedDoorways();
 
-        AddObstacles();
+        AddObstaclesAndPrefferedPaths();
 
         AddDoorsToRooms();
 
@@ -225,19 +225,19 @@ public class InstantiatedRoom : MonoBehaviour
     }
 
     /// <summary>
-    /// Update obstacles used by AStart pathfinding
+    /// Update obstacles and preferred path tiles used by AStart pathfinding
     /// </summary>
-    private void AddObstacles()
+    private void AddObstaclesAndPrefferedPaths()
     {
         // Array to store the wall obstacles
-        aStarMovementPenality = new int[room.templateUpperBounds.x - room.templateLowerBounds.x + 1, room.templateUpperBounds.y - room.templateLowerBounds.y + 1];
+        aStarMovementPenalty = new int[room.templateUpperBounds.x - room.templateLowerBounds.x + 1, room.templateUpperBounds.y - room.templateLowerBounds.y + 1];
 
         for (int x = 0; x < (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); x++)
         {
             for (int y = 0; y < (room.templateUpperBounds.y - room.templateLowerBounds.y + 1); y++)
             {
-                // Set default movement penality for grid squares
-                aStarMovementPenality[x, y] = Settings.defaultAStarMovementPenalty;
+                // Set default movement penalty for grid squares
+                aStarMovementPenalty[x, y] = Settings.defaultAStarMovementPenalty;
 
                 // Add obstacles for collision tiles the enemy can't walk on
                 TileBase tile = collisionTilemap.GetTile(new Vector3Int(x + room.templateLowerBounds.x, y + room.templateLowerBounds.y, 0));
@@ -248,9 +248,16 @@ public class InstantiatedRoom : MonoBehaviour
                     // If the tile in the tilemap is a collision tile, set the movement penalty to 0
                     if (tile == collisionTile)
                     {
-                        aStarMovementPenality[x, y] = 0;
+                        aStarMovementPenalty[x, y] = 0;
                         break;
                     }
+                }
+
+                // Add preferred path for enemies (1 is the preferred path value, default value for a 
+                // grid location is specified in the Settings script).
+                if (tile == GameResources.Instance.preferredEnemyTilePath)
+                {
+                    aStarMovementPenalty[x, y] = Settings.preferredPathAStarMovementPenalty;
                 }
             }
         }
