@@ -51,6 +51,11 @@ public static class Settings
     public const float useAimAngleDistance = 3.5f; // Unity units
     #endregion
 
+    #region ASTAR PATHFINDING PARAMETERS
+    public const int defaultAStarMovementPenalty = 40;
+    public const int preferredPathAStarMovementPenalty = 1;
+    #endregion
+
     #region UI PARAMETERS
     public const float uiAmmoIconSpacing = 4f;
     #endregion

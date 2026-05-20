@@ -61,6 +61,8 @@ public class Ammo : MonoBehaviour, IFireable
     {
         AmmoHitEffect();
 
+        // Call sound effect (ex. RPG explosion)
+
         DisableAmmo();
     }
 
