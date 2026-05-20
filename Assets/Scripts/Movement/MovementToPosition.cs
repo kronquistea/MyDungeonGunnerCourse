@@ -43,6 +43,6 @@ public class MovementToPosition : MonoBehaviour
     {
         Vector2 unitVector = Vector3.Normalize(movePosition - currentPosition);
 
-        rigidBody2D.MovePosition(rigidBody2D.position + (unitVector * moveSpeed * Time.fixedDeltaTime));
+        rigidBody2D.MovePosition(rigidBody2D.position + (moveSpeed * Time.fixedDeltaTime * unitVector));
     }
 }

@@ -67,6 +67,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.30208537
       objectReference: {fileID: 0}
+    - target: {fileID: 4016331506620316128, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: dffc6f19f9b26fa49a4a4d197297809c, type: 2}
+    - target: {fileID: 4569330691253767261, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 8634a2e1993b4c241b773073c122ef1c, type: 2}
     - target: {fileID: 4679659697738115952, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
       propertyPath: m_Name
       value: Hedusa_Green

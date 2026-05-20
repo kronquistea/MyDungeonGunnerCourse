@@ -67,6 +67,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.39716092
       objectReference: {fileID: 0}
+    - target: {fileID: 4016331506620316128, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 205387c9ca58e89479d6547da9546667, type: 2}
+    - target: {fileID: 4569330691253767261, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 2dafe4c4fced8c546b0e0003014e9c93, type: 2}
     - target: {fileID: 4679659697738115952, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
       propertyPath: m_Name
       value: SkullFace_Blue

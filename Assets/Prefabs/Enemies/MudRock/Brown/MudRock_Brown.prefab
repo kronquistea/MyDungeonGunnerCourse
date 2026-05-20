@@ -67,6 +67,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6886792
       objectReference: {fileID: 0}
+    - target: {fileID: 4016331506620316128, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: f01c16a7554e418409daed955b02cba0, type: 2}
+    - target: {fileID: 4569330691253767261, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 68bc8cf9b1582c147bf0eecb4e40bf8d, type: 2}
     - target: {fileID: 4679659697738115952, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
       propertyPath: m_Name
       value: MudRock_Brown

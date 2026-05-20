@@ -63,6 +63,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4016331506620316128, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
+      propertyPath: enemyDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 0cbba56f17126384b826e05ca280c5b7, type: 2}
+    - target: {fileID: 4569330691253767261, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
+      propertyPath: movementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 031d64c569a53af428a44176a1593953, type: 2}
     - target: {fileID: 4679659697738115952, guid: c826d753229075545ab47ba5ab8fad35, type: 3}
       propertyPath: m_Name
       value: SlimeBlockKing_Green

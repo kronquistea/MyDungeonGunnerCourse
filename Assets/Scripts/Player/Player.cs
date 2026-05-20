@@ -105,6 +105,15 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
+    /// Get the position of the player
+    /// </summary>
+    /// <returns>Vector3 containing current position of the player</returns>
+    public Vector3 GetPlayerPosition()
+    {
+        return transform.position;
+    }
+
+    /// <summary>
     /// Add a weapon to the player weapon dictionary.
     /// Called when initializing starting weapons (PlayerDetailsSO).
     /// Also called when the player acquires a new weapon during the game, this method will then set the newly acquired weapon as the current weapon.
