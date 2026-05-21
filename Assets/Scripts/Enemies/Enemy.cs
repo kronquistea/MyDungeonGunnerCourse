@@ -52,7 +52,19 @@ public class Enemy : MonoBehaviour
     {
         this.enemyDetails = enemyDetails;
 
+        SetEnemyMovementUpdateFrame(enemySpawnNumber);
+
         SetEnemyAnimationSpeed();
+    }
+
+    /// <summary>
+    /// Set enemy movement update frame
+    /// </summary>
+    /// <param name="enemySpawnNumber"></param>
+    private void SetEnemyMovementUpdateFrame(int enemySpawnNumber)
+    {
+        // Set frame number that enemy should process it's updates on
+        enemyMovementAI.SetUpdateFrameNumber(enemySpawnNumber % Settings.targetFrameRateToSpreadPathfindingOver);
     }
 
     /// <summary>

@@ -59,6 +59,7 @@ public static class Settings
     public const int preferredPathAStarMovementPenalty = 1;
     public const float playerMoveDistanceToRebuildPath = 3f; // If the player moves more than 3 unity units, rebuild enemy path
     public const float enemyPathRebuildCooldown = 2f;
+    public const int targetFrameRateToSpreadPathfindingOver = 60;
     #endregion
 
     #region UI PARAMETERS
