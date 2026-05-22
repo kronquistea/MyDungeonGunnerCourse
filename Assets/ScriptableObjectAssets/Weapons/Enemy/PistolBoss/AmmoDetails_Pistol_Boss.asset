@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 421c0339de482124faf6fcd55906e7b6, type: 3}
-  m_Name: AmmoDetails_QBZ95SMG
+  m_Name: AmmoDetails_Pistol_Boss
   m_EditorClassIdentifier: 
-  ammoName: QBZ95SMG Ammo
-  isPlayerAmmo: 1
-  ammoSprite: {fileID: 21300000, guid: e36e8bbd18074d341b170885ac002038, type: 3}
+  ammoName: Pistol Boss Ammo
+  isPlayerAmmo: 0
+  ammoSprite: {fileID: 21300000, guid: 4df9cc7131cd27f4288bca5e76c82034, type: 3}
   ammoPrefabArray:
-  - {fileID: 5543280562518253747, guid: 5eb447b6ad1858e43a1bcf85e7c2db7a, type: 3}
-  ammoMaterial: {fileID: 2100000, guid: c92da765fb7cca448a71d99956fe00bd, type: 2}
+  - {fileID: 5543280562518253747, guid: 00f63194300457048a84701f8708dd14, type: 3}
+  ammoMaterial: {fileID: 2100000, guid: a8f373dc317a30d40a68b73a78ce1d09, type: 2}
   ammoChargeTime: 0
   ammoChargeMaterial: {fileID: 0}
-  ammoHitEffect: {fileID: 11400000, guid: 9b101cc729822e24b83be981a6871c28, type: 2}
-  ammoDamage: 5
-  ammoSpeedMin: 14
-  ammoSpeedMax: 14
-  ammoRange: 12
+  ammoHitEffect: {fileID: 11400000, guid: aa928854665e24b4e883bb25db5daa54, type: 2}
+  ammoDamage: 8
+  ammoSpeedMin: 15
+  ammoSpeedMax: 20
+  ammoRange: 30
   ammoRotationSpeed: 1
   ammoSpreadMin: 2
-  ammoSpreadMax: 5
+  ammoSpreadMax: 4
   ammoSpawnAmountMin: 1
   ammoSpawnAmountMax: 1
   ammoSpawnIntervalMin: 0
