@@ -79,7 +79,7 @@ public class EnemyDetailsSO : ScriptableObject
     #region Tooltip
     [Tooltip("The maximum firing duration that the enemy shoots for during a firing burst.")]
     #endregion
-    public float firingDurationMax = 1f;
+    public float firingDurationMax = 2f;
 
     #region Tooltip
     [Tooltip("Select this if line of sight is required of the player before the enemy fires.")]
