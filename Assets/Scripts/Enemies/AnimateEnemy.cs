@@ -23,6 +23,9 @@ public class AnimateEnemy : MonoBehaviour
 
         // Subscribe to idle event
         enemy.idleEvent.OnIdle += IdleEvent_OnIdle;
+
+        // Subscribe to weapon aim event
+        enemy.aimWeaponEvent.OnWeaponAim += AimWeaponEvent_OnWeaponAim;
     }
 
     private void OnDisable()
@@ -32,6 +35,9 @@ public class AnimateEnemy : MonoBehaviour
 
         // Unsubscribe from idle event
         enemy.idleEvent.OnIdle -= IdleEvent_OnIdle;
+
+        // Unsubscribe from weapon aim event
+        enemy.aimWeaponEvent.OnWeaponAim -= AimWeaponEvent_OnWeaponAim;
     }
 
     /// <summary>
@@ -41,15 +47,6 @@ public class AnimateEnemy : MonoBehaviour
     /// <param name="movementToPositionArgs"></param>
     private void MovementToPositionEvent_OnMovementToPosition(MovementToPositionEvent movementToPositionEvent, MovementToPositionArgs movementToPositionArgs)
     {
-        if (enemy.transform.position.x < GameManager.Instance.GetPlayer().transform.position.x)
-        {
-            SetAimWeaponAnimationParameters(AimDirection.Right);
-        }
-        else
-        {
-            SetAimWeaponAnimationParameters(AimDirection.Left);
-        }
-
         SetMovementAnimationParameters();
     }
 
@@ -60,6 +57,17 @@ public class AnimateEnemy : MonoBehaviour
     private void IdleEvent_OnIdle(IdleEvent idleEvent)
     {
         SetIdleAnimationParameters();
+    }
+
+    /// <summary>
+    /// On weapon event handler
+    /// </summary>
+    /// <param name="aimWeaponEvent"></param>
+    /// <param name="aimWeaponEventArgs"></param>
+    private void AimWeaponEvent_OnWeaponAim(AimWeaponEvent aimWeaponEvent, AimWeaponEventArgs aimWeaponEventArgs)
+    {
+        InitializeAimAnimationParameters();
+        SetAimWeaponAnimationParameters(aimWeaponEventArgs.aimDirection);
     }
 
     /// <summary>
@@ -81,8 +89,6 @@ public class AnimateEnemy : MonoBehaviour
     /// <param name="aimDirection"></param>
     private void SetAimWeaponAnimationParameters(AimDirection aimDirection)
     {
-        InitializeAimAnimationParameters();
-
         switch (aimDirection)
         {
             case AimDirection.Up:
