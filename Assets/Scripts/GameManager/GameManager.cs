@@ -26,6 +26,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
     private Player player;
 
     [HideInInspector] public GameState gameState;
+    [HideInInspector] public GameState previousGameState;
 
     protected override void Awake()
     {
@@ -76,6 +77,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
     // Start is called before the first frame update
     private void Start()
     {
+        previousGameState = GameState.gameStarted;
         gameState = GameState.gameStarted;
     }
 
@@ -172,6 +174,15 @@ public class GameManager : SingletonMonobehavior<GameManager>
     public Sprite GetPlayerMiniMapIcon()
     {
         return playerDetails.playerMiniMapIcon;
+    }
+
+    /// <summary>
+    /// Get the current dungeon level
+    /// </summary>
+    /// <returns>DungeonLevelSO for the current dungeon level</returns>
+    public DungeonLevelSO GetCurrentDungeonLevel()
+    {
+        return dungeonLevelList[currentDungeonLevelListIndex];
     }
 
     #region Validation

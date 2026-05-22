@@ -20,6 +20,7 @@ public class EnemyMovementAI : MonoBehaviour
     private WaitForFixedUpdate waitForFixedUpdate;
     [HideInInspector] public float moveSpeed;
     private bool chasePlayer = false;
+    [HideInInspector] public int updateFrameNumber = 1; // Default to 1
 
     private void Awake()
     {
@@ -59,6 +60,12 @@ public class EnemyMovementAI : MonoBehaviour
 
         // If the enemy is not close enough to the player (for chasing) then return.
         if (!chasePlayer)
+        {
+            return;
+        }
+
+        // Only process A* path rebuild for specific frame to spread pathfinding load between frames and enemies
+        if (Time.frameCount % Settings.targetFrameRateToSpreadPathfindingOver != updateFrameNumber)
         {
             return;
         }
@@ -116,6 +123,15 @@ public class EnemyMovementAI : MonoBehaviour
             // Trigger idle event as there is no path
             enemy.idleEvent.CallIdleEvent();
         }
+    }
+
+    /// <summary>
+    /// Set the frame number that the enemy path will be recalculated on - to avoid performance spikes
+    /// </summary>
+    /// <param name="updateFrameNumber"></param>
+    public void SetUpdateFrameNumber(int updateFrameNumber)
+    {
+        this.updateFrameNumber = updateFrameNumber;
     }
 
     /// <summary>
