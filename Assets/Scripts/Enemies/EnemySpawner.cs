@@ -172,6 +172,8 @@ public class EnemySpawner : SingletonMonobehavior<EnemySpawner>
 
         currentEnemyCount--;
 
+        StaticEventHandler.CallPointsScoredEvent(destroyedEventArgs.points);
+
         // Check if there are no alive enemies, and all enemies to be spawned have been spawned
         if (currentEnemyCount <= 0 && enemiesSpawnedSoFar == enemiesToSpawn)
         {
