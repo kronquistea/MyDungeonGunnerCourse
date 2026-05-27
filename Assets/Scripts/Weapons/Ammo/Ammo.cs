@@ -18,6 +18,7 @@ public class Ammo : MonoBehaviour, IFireable
     private float ammoChargeTimer; // Used for ammo patterns
     private bool isAmmoMaterialSet = false; // Once charge phase for ammo material is complete, set to true
     private bool overrideAmmoMovement; // Used for ammo patterns
+    private bool isColliding = false; // Prevent one ammo from dealing damage multiple times due to ammo and player/enemy collider hitboxes
 
     private void Awake()
     {
@@ -59,11 +60,36 @@ public class Ammo : MonoBehaviour, IFireable
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Check if the ammo is already colliding with something, if so do not process it
+        if (isColliding)
+        {
+            return;
+        }
+
+        DealDamage(collision);
+
         AmmoHitEffect();
 
         // Call sound effect (ex. RPG explosion)
 
         DisableAmmo();
+    }
+
+    /// <summary>
+    /// Deal damage to the object the ammo collided with if the health component of the collision object exists.
+    /// </summary>
+    /// <param name="collision"></param>
+    private void DealDamage(Collider2D collision)
+    {
+        Health health = collision.GetComponent<Health>();
+
+        if (health != null)
+        {
+            // Prevent ammo dealing damage multiple times
+            isColliding = true;
+
+            health.TakeDamage(ammoDetails.ammoDamage);
+        }
     }
 
     /// <summary>
@@ -75,10 +101,12 @@ public class Ammo : MonoBehaviour, IFireable
     /// <param name="ammoSpeed">Used for ammo initialization</param>
     /// <param name="weaponAimDirectionVector">Used for ammo initialization</param>
     /// <param name="overrideAmmoMovement">Can be set to true if a waeapon ammo pattern is being fired</param>
-    public void initializeAmmo(AmmoDetailsSO ammoDetails, float aimAngle, float weaponAimAngle, float ammoSpeed, Vector3 weaponAimDirectionVector, bool overrideAmmoMovement = false)
+    public void InitializeAmmo(AmmoDetailsSO ammoDetails, float aimAngle, float weaponAimAngle, float ammoSpeed, Vector3 weaponAimDirectionVector, bool overrideAmmoMovement = false)
     {
         #region Ammo
         this.ammoDetails = ammoDetails;
+
+        isColliding = false;
 
         // Set fire direction
         SetFireDirection(ammoDetails, aimAngle, weaponAimAngle, weaponAimDirectionVector);

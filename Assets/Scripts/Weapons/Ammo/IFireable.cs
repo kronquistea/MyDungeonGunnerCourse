@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IFireable
 {
-    void initializeAmmo(
+    void InitializeAmmo(
         AmmoDetailsSO ammoDetails, 
         float aimAngle, 
         float weaponAimAngle, 

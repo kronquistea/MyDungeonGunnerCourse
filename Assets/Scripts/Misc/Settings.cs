@@ -17,6 +17,7 @@ public static class Settings
     #region ROOM SETTINGS
     public const float fadeInTime = 0.5f; // Time to fade in the room
     public const int maxChildCorridors = 3; // Max number of child corridors leading FROM a room.
+    public const float doorUnlockDelay = 1f; // Delay for unlocking doors after all enemies in room are cleared.
     #endregion
 
     #region ANIMATOR PARAMETERS
@@ -62,7 +63,16 @@ public static class Settings
     public const int targetFrameRateToSpreadPathfindingOver = 60;
     #endregion
 
+    #region ENEMY PARAMETERS
+    public const int defaultEnemyHealth = 20;
+    #endregion
+
     #region UI PARAMETERS
+    public const float uiHeartIconSpacing = 16f;
     public const float uiAmmoIconSpacing = 4f;
+    #endregion
+
+    #region CONTACT DAMAGE PARAMETERS
+    public const float contactDamageCollisionResetDelay = 0.5f;
     #endregion
 }

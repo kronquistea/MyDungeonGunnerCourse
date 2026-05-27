@@ -90,9 +90,16 @@ public class GameResources : MonoBehaviour
     [Header("UI")]
     #endregion
     #region Tooltip
+    [Tooltip("Populate with heart icon prefab")]
+    #endregion
+    public GameObject heartIconPrefab;
+    
+    #region Tooltip
     [Tooltip("Populate with ammo icon prefab")]
     #endregion
     public GameObject ammoIconPrefab;
+
+
 
     #region Validation
 #if UNITY_EDITOR
@@ -118,6 +125,7 @@ public class GameResources : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(preferredEnemyTilePath), preferredEnemyTilePath);
 
         // UI
+        HelperUtilities.ValidateCheckNullValue(this, nameof(heartIconPrefab), heartIconPrefab);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoIconPrefab), ammoIconPrefab);
     }
 #endif
