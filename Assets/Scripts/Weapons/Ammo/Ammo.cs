@@ -50,6 +50,11 @@ public class Ammo : MonoBehaviour, IFireable
 
         if (ammoRange < 0f)
         {
+            if (ammoDetails.isPlayerAmmo)
+            {
+                StaticEventHandler.CallMultiplierEvent(false);
+            }
+
             DisableAmmo();
         }
     }
@@ -83,12 +88,35 @@ public class Ammo : MonoBehaviour, IFireable
     {
         Health health = collision.GetComponent<Health>();
 
+        bool enemyHit = false;
+
         if (health != null)
         {
             // Prevent ammo dealing damage multiple times
             isColliding = true;
 
             health.TakeDamage(ammoDetails.ammoDamage);
+
+            // Check if an enemy was hit
+            if (health.enemy != null)
+            {
+                enemyHit = true;
+            }
+        }
+
+        // Check if the ammo is player ammo
+        if (ammoDetails.isPlayerAmmo)
+        {
+            // Check if an enemy was hit, if so, increase multiplier
+            if (enemyHit)
+            {
+                StaticEventHandler.CallMultiplierEvent(true);
+            }
+            // If an enemy was not hit, decrease multiplier
+            else
+            {
+                StaticEventHandler.CallMultiplierEvent(false);
+            }
         }
     }
 

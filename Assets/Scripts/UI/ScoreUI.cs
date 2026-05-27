@@ -31,6 +31,6 @@ public class ScoreUI : MonoBehaviour
     /// <param name="scoreChangedArgs"></param>
     private void StaticEventHandler_OnScoreChanged(ScoreChangedArgs scoreChangedArgs)
     {
-        scoreTextTMP.text = "SCORE: " + scoreChangedArgs.score.ToString("###,###0");
+        scoreTextTMP.text = "SCORE: " + scoreChangedArgs.score.ToString("###,###0") + "\nMULTIPLIER: x" + scoreChangedArgs.multiplier;
     }
 }

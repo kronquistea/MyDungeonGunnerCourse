@@ -29,6 +29,9 @@ public class GameManager : SingletonMonobehavior<GameManager>
     [HideInInspector] public GameState previousGameState;
 
     private long gameScore;
+    private int scoreMultiplier;
+    private const int scoreMultiplierMin = 1;
+    private const int scoreMultiplierMax = 30;
 
     protected override void Awake()
     {
@@ -60,8 +63,11 @@ public class GameManager : SingletonMonobehavior<GameManager>
         // Subscribe to room changed event
         StaticEventHandler.OnRoomChanged += StaticEventHandler_OnRoomChanged;
 
-        // Subscribe to on points scored event
+        // Subscribe to points scored event
         StaticEventHandler.OnPointsScored += StaticEventHandler_OnPointsScored;
+
+        // Subscribe to multplier event
+        StaticEventHandler.OnMultiplier += StaticEventHandler_OnMultiplier;
     }
 
     private void OnDisable()
@@ -71,6 +77,9 @@ public class GameManager : SingletonMonobehavior<GameManager>
 
         // Unsubscribe from on points scored event
         StaticEventHandler.OnPointsScored -= StaticEventHandler_OnPointsScored;
+
+        // Unsubscribe from multplier event
+        StaticEventHandler.OnMultiplier -= StaticEventHandler_OnMultiplier;
     }
 
     /// <summary>
@@ -83,16 +92,38 @@ public class GameManager : SingletonMonobehavior<GameManager>
     }
 
     /// <summary>
-    /// Handle on points scored event
+    /// Handle points scored event
     /// </summary>
     /// <param name="pointsScoredArgs"></param>
     private void StaticEventHandler_OnPointsScored(PointsScoredArgs pointsScoredArgs)
     {
         // Increase score
-        gameScore += pointsScoredArgs.points;
+        gameScore += pointsScoredArgs.points * scoreMultiplier;
 
         // Call score changed event
-        StaticEventHandler.CallScoreChangedEvent(gameScore);
+        StaticEventHandler.CallScoreChangedEvent(gameScore, scoreMultiplier);
+    }
+
+    /// <summary>
+    /// Handle multiplier event
+    /// </summary>
+    /// <param name="multiplierArgs"></param>
+    private void StaticEventHandler_OnMultiplier(MultiplierArgs multiplierArgs)
+    {
+        // If the multiplier is true (enemy hit) increase multiplier by 1
+        if (multiplierArgs.multiplier)
+        {
+            scoreMultiplier++;
+        }
+        else
+        {
+            scoreMultiplier--;
+        }
+
+        // Clamp score multiplier to min and max values (currently 1 and 30)
+        scoreMultiplier = Mathf.Clamp(scoreMultiplier, scoreMultiplierMin, scoreMultiplierMax);
+
+        StaticEventHandler.CallScoreChangedEvent(gameScore, scoreMultiplier);
     }
 
     // Start is called before the first frame update
@@ -102,6 +133,8 @@ public class GameManager : SingletonMonobehavior<GameManager>
         gameState = GameState.gameStarted;
 
         gameScore = 0;
+
+        scoreMultiplier = 1;
     }
 
     // Update is called once per frame
