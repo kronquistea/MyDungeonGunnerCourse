@@ -28,8 +28,17 @@ public class Destroyed : MonoBehaviour
         destroyedEvent.OnDestroyed -= DestroyedEvent_OnDestroyed;
     }
 
-    private void DestroyedEvent_OnDestroyed(DestroyedEvent destroyedEvent)
+    private void DestroyedEvent_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
     {
-        Destroy(gameObject);
+        // Check if the player died (as opposed to an enemy/boss)
+        if (destroyedEventArgs.playerDied)
+        {
+            // Disable the player game object to stop enemy pathfinding
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -165,7 +165,7 @@ public class EnemySpawner : SingletonMonobehavior<EnemySpawner>
     /// Process enemy destroyed
     /// </summary>
     /// <param name="destroyedEvent"></param>
-    private void Enemy_OnDestroyed(DestroyedEvent destroyedEvent)
+    private void Enemy_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
     {
         // Unsubscribe from event
         destroyedEvent.OnDestroyed -= Enemy_OnDestroyed;
