@@ -68,6 +68,7 @@ public static class Settings
     #endregion
 
     #region UI PARAMETERS
+    public const float uiHeartIconSpacing = 16f;
     public const float uiAmmoIconSpacing = 4f;
     #endregion
 }

@@ -115,7 +115,6 @@ public class Player : MonoBehaviour
         // Check if player has died
         if (healthEventArgs.healthAmount <= 0f)
         {
-            Debug.Log("Calling destroyed event with player died = true");
             destroyedEvent.CallDestroyedEvent(true);
         }
     }
