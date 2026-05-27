@@ -77,16 +77,6 @@ public class Health : MonoBehaviour
 
             PostHitImmunity();
         }
-
-        if (isDamageable && isRolling)
-        {
-            Debug.Log("Avoided damage due to rolling");
-        }
-
-        if (!isDamageable && !isRolling)
-        {
-            Debug.Log("Avoided damage due to immunity");
-        }
     }
 
     /// <summary>

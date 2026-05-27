@@ -6,6 +6,8 @@ using UnityEngine.Rendering;
 #region REQUIRE COMPONENTS
 [RequireComponent(typeof(HealthEvent))]
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(DealContactDamage))]
+[RequireComponent(typeof(ReceiveContactDamage))]
 [RequireComponent(typeof(DestroyedEvent))]
 [RequireComponent(typeof(Destroyed))]
 [RequireComponent(typeof(PlayerControl))]
@@ -112,8 +114,6 @@ public class Player : MonoBehaviour
     /// <param name="healthEventArgs"></param>
     private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
-        Debug.Log("Health Amount = " + healthEventArgs.healthAmount);
-
         // Check if player has died
         if (healthEventArgs.healthAmount <= 0f)
         {
