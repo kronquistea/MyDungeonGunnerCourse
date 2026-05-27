@@ -17,9 +17,22 @@ public static class StaticEventHandler
         // If there are no subscribers to the OnRoomChanged event (identified using the "?" operator) then do not invoke the event
         OnRoomChanged?.Invoke(new RoomChangedEventArgs() { room = room });
     }
+
+    // Room enemies defeated event
+    public static event Action<RoomEnemiesDefeatedArgs> OnRoomEnemiesDefeated;
+
+    public static void CallRoomEnemiesDefeatedEvent(Room room)
+    {
+        OnRoomEnemiesDefeated?.Invoke(new RoomEnemiesDefeatedArgs() { room = room });
+    }
 }
 
 public class RoomChangedEventArgs : EventArgs
+{
+    public Room room;
+}
+
+public class RoomEnemiesDefeatedArgs : EventArgs
 {
     public Room room;
 }

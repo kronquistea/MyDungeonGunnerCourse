@@ -156,5 +156,44 @@ public class EnemySpawner : SingletonMonobehavior<EnemySpawner>
         GameObject enemy = Instantiate(enemyDetails.enemyPrefab, position, Quaternion.identity, transform);
 
         enemy.GetComponent<Enemy>().EnemyInitialization(enemyDetails, enemiesSpawnedSoFar, dungeonLevel);
+
+        // Subscribe to enemy destroyed event
+        enemy.GetComponent<DestroyedEvent>().OnDestroyed += Enemy_OnDestroyed;
+    }
+
+    /// <summary>
+    /// Process enemy destroyed
+    /// </summary>
+    /// <param name="destroyedEvent"></param>
+    private void Enemy_OnDestroyed(DestroyedEvent destroyedEvent)
+    {
+        // Unsubscribe from event
+        destroyedEvent.OnDestroyed -= Enemy_OnDestroyed;
+
+        currentEnemyCount--;
+
+        // Check if there are no alive enemies, and all enemies to be spawned have been spawned
+        if (currentEnemyCount <= 0 && enemiesSpawnedSoFar == enemiesToSpawn)
+        {
+            currentRoom.isClearedOfEnemies = true;
+
+            // Set game state
+            if (GameManager.Instance.gameState == GameState.engagingEnemies)
+            {
+                GameManager.Instance.gameState = GameState.playingLevel;
+                GameManager.Instance.previousGameState = GameState.engagingEnemies;
+            }
+            else if (GameManager.Instance.gameState == GameState.engagingBoss)
+            {
+                GameManager.Instance.gameState = GameState.playingLevel;
+                GameManager.Instance.previousGameState = GameState.engagingBoss;
+            }
+
+            // Unlock all the doors for the room
+            currentRoom.instantiatedRoom.UnlockDoors(Settings.doorUnlockDelay);
+
+            // Trigger room enemies defeated event
+            StaticEventHandler.CallRoomEnemiesDefeatedEvent(currentRoom);
+        }
     }
 }

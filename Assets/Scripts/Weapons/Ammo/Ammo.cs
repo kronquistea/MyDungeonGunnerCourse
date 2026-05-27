@@ -59,11 +59,27 @@ public class Ammo : MonoBehaviour, IFireable
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        DealDamage(collision);
+
         AmmoHitEffect();
 
         // Call sound effect (ex. RPG explosion)
 
         DisableAmmo();
+    }
+
+    /// <summary>
+    /// Deal damage to the object the ammo collided with if the health component of the collision object exists.
+    /// </summary>
+    /// <param name="collision"></param>
+    private void DealDamage(Collider2D collision)
+    {
+        Health health = collision.GetComponent<Health>();
+
+        if (health != null)
+        {
+            health.TakeDamage(ammoDetails.ammoDamage);
+        }
     }
 
     /// <summary>
