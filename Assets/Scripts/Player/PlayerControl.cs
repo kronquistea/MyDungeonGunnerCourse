@@ -19,6 +19,7 @@ public class PlayerControl : MonoBehaviour
     private Coroutine playerRollCoroutine;
     private WaitForFixedUpdate waitForFixedUpdate;
     private float playerRollCooldownTimer = 0f;
+    private bool isPlayerMovementDisabled = false;
 
     [HideInInspector] public bool isPlayerRolling = false;
     
@@ -78,7 +79,13 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        // If player is rolling then return
+        // Check if player movement is disabled, if so, return
+        if (isPlayerMovementDisabled)
+        {
+            return;
+        }
+
+        // Check if player is rolling, if so, return
         if (isPlayerRolling)
         {
             return;
@@ -433,6 +440,26 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enable player movement
+    /// </summary>
+    public void EnablePlayer()
+    {
+        isPlayerMovementDisabled = false;
+    }
+
+    /// <summary>
+    /// Disable player movement and call idle event
+    /// </summary>
+    public void DisablePlayer()
+    {
+        isPlayerMovementDisabled = true;
+        player.idleEvent.CallIdleEvent();
+    }
+
+    /// <summary>
+    /// Set the current weapon to the first weapon in the player weapon list
+    /// </summary>
     private void SetCurrentWeaponToFirstInTheList()
     {
         // Create new temporary list
