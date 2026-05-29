@@ -77,9 +77,17 @@ public class EnemySpawner : SingletonMonobehavior<EnemySpawner>
     /// </summary>
     private void SpawnEnemies()
     {
-        // Set gamestate engaging enemies
-        if (GameManager.Instance.gameState == GameState.playingLevel)
+        // Check if game state is boss stage
+        if (GameManager.Instance.gameState == GameState.bossStage)
         {
+            // Set game state to engaging boss
+            GameManager.Instance.previousGameState = GameState.bossStage;
+            GameManager.Instance.gameState = GameState.engagingBoss;
+        }
+        // Else check if game state is playing level
+        else if (GameManager.Instance.gameState == GameState.playingLevel)
+        {
+            // Set game state to engaging enemies
             GameManager.Instance.previousGameState = GameState.playingLevel;
             GameManager.Instance.gameState = GameState.engagingEnemies;
         }
@@ -171,6 +179,8 @@ public class EnemySpawner : SingletonMonobehavior<EnemySpawner>
         destroyedEvent.OnDestroyed -= Enemy_OnDestroyed;
 
         currentEnemyCount--;
+
+        StaticEventHandler.CallPointsScoredEvent(destroyedEventArgs.points);
 
         // Check if there are no alive enemies, and all enemies to be spawned have been spawned
         if (currentEnemyCount <= 0 && enemiesSpawnedSoFar == enemiesToSpawn)

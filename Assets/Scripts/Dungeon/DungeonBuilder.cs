@@ -231,6 +231,8 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
             // Get a random room template for room node that is consistent with the parent door orientation
             RoomTemplateSO roomTemplate = GetRandomTemplateForRoomConsistentWithParent(roomNode, doorwayParent);
 
+            //Debug.Log("roomTemplate: " + roomTemplate);
+
             // Create a room
             Room room = CreateRoomFromRoomTemplate(roomTemplate, roomNode);
 
@@ -304,9 +306,6 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
     /// <returns>True if the room does NOT overlap, false otherwise</returns>
     private bool PlaceTheRoom(Room parentRoom, Doorway doorwayParent, Room room)
     {
-        // ENTRANCE, WEST DOORWAY, EW CORRIDOR
-
-
         // Get current room doorway position
         Doorway doorway = GetOppositeDoorway(doorwayParent, room.doorwayList);
 
@@ -665,6 +664,12 @@ public class DungeonBuilder : SingletonMonobehavior<DungeonBuilder>
 
             // Save gameobject reference
             room.instantiatedRoom = instantiatedRoom;
+
+            // Demo code
+            //if (!room.roomNodeType.isBossRoom)
+            //{
+            //    room.isClearedOfEnemies = true;
+            //}
         }
     }
 

@@ -6,6 +6,15 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Health : MonoBehaviour
 {
+    #region Header REFERENCES
+    [Space(10)]
+    [Header("REFERENCES")]
+    #endregion
+    #region Tooltip
+    [Tooltip("Populate with the HealthBar component on the HealthBar gameobject")]
+    #endregion
+    [SerializeField] private HealthBar healthBar;
+
     private int startingHealth;
     private int currentHealth;
     private HealthEvent healthEvent;
@@ -55,6 +64,17 @@ public class Health : MonoBehaviour
                 spriteRenderer = enemy.spriteRendererArray[0];
             }
         }
+
+        // Check if health bar should be enabled
+        if (enemy != null && enemy.enemyDetails.isHealthBarDisplayed && healthBar != null)
+        {
+            healthBar.EnableHealthBar();
+        }
+        // Check if health bar should be disabled
+        else if (healthBar != null)
+        {
+            healthBar.DisableHealthBar();
+        }
     }
 
     /// <summary>
@@ -76,6 +96,13 @@ public class Health : MonoBehaviour
             CallHealthEvent(damageAmount);
 
             PostHitImmunity();
+
+            // Check if health bar exists and should therefore be updated
+            if (healthBar != null)
+            {
+                // Set health bar value based on current health as a percentage of starting health
+                healthBar.SetHealthBarValue((float)currentHealth / startingHealth);
+            }
         }
     }
 
