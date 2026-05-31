@@ -40,6 +40,7 @@ public class SoundEffectSO : ScriptableObject
     #region Tooltip
     [Tooltip("The sound effect volume")]
     #endregion
+    [Range(0.1f, 1f)]
     public float soundEffectVolume = 1f;
 
     #region Validation

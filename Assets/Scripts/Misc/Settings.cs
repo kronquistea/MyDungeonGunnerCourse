@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +43,10 @@ public static class Settings
 
     // Animator parameters - Door
     public static int open = Animator.StringToHash("open");
+
+    // Animator parameters - DestroyableItem
+    public static int destroy = Animator.StringToHash("destroy");
+    public static String stateDestroyed = "Destroyed";
     #endregion
 
     #region GAMEOBJECT TAGS
