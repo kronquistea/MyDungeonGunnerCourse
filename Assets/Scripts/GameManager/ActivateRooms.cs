@@ -10,23 +10,30 @@ public class ActivateRooms : MonoBehaviour
     #endregion
     [SerializeField] private Camera miniMapCamera;
 
+    private Camera cameraMain;
+
     private void Start()
     {
+        // Cache main camera reference
+        cameraMain = Camera.main;
+
         // Call EnableRooms after 0.5 seconds, then repeatedly call it every 0.75 seconds after the initial delay
         InvokeRepeating("EnableRooms", 0.5f, 0.75f);
     }
 
     /// <summary>
-    /// Enable/Disable rooms based on viewport (minimap camera in this case) visibility to them
+    /// Enable/Disable rooms and related items (decoration objects) based on minimap camera viewport and main camera viewport respectively.
     /// </summary>
     private void EnableRooms()
     {
+        HelperUtilities.CameraWorldPositionBounds(out Vector2Int miniMapCameraWorldPositionLowerBounds, out Vector2Int miniMapCameraWorldPositionUpperBounds, miniMapCamera);
+
+        HelperUtilities.CameraWorldPositionBounds(out Vector2Int mainCameraWorldPositionLowerBounds, out Vector2Int mainCameraWorldPositionUpperBounds, cameraMain);
+
         // Iterate through dungeon rooms in the current level
         foreach (KeyValuePair<string, Room> keyValuePair in DungeonBuilder.Instance.dungeonBuilderRoomDictionary)
         {
             Room room = keyValuePair.Value;
-
-            HelperUtilities.CameraWorldPositionBounds(out Vector2Int miniMapCameraWorldPositionLowerBounds, out Vector2Int miniMapCameraWorldPositionUpperBounds, miniMapCamera);
 
             // Check if the room is within the viewport of the camera (minimap camera)
             if ((room.lowerBounds.x <= miniMapCameraWorldPositionUpperBounds.x && room.lowerBounds.y <= miniMapCameraWorldPositionUpperBounds.y) &&
@@ -34,6 +41,19 @@ public class ActivateRooms : MonoBehaviour
             {
                 // Activate the room
                 room.instantiatedRoom.gameObject.SetActive(true);
+
+                // Check if room is within main camera viewport (for loading items)
+                if ((room.lowerBounds.x <= mainCameraWorldPositionUpperBounds.x && room.lowerBounds.y <= mainCameraWorldPositionUpperBounds.y) &&
+                    (room.upperBounds.x >= mainCameraWorldPositionLowerBounds.x && room.upperBounds.y >= mainCameraWorldPositionLowerBounds.y))
+                {
+                    // If the main camera is within viewing of the room, load the items
+                    room.instantiatedRoom.ActivateEnvironmentGameObjects();
+                }
+                else
+                {
+                    // Otherwise unload/deactivate the items
+                    room.instantiatedRoom.DeactivateEnvironmentGameObjects();
+                }
             }
             // Room is not within the viewport of the camera (minimap camera)
             else

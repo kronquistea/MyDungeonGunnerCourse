@@ -39,6 +39,12 @@ public class RoomLightingControl : MonoBehaviour
             // Fade in room
             FadeInRoomLighting();
 
+            // Ensure room environment decoration game objects are activated
+            instantiatedRoom.ActivateEnvironmentGameObjects();
+
+            // Fade in environment decoration gameobjects lighting
+            FadeInEnvironmentLighting();
+
             // Fade in the room doors lighting
             FadeInDoors();
 
@@ -83,6 +89,59 @@ public class RoomLightingControl : MonoBehaviour
         instantiatedRoom.decoration2Tilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
         instantiatedRoom.frontTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
         instantiatedRoom.minimapTilemap.GetComponent<TilemapRenderer>().material = GameResources.Instance.litMaterial;
+    }
+
+    /// <summary>
+    /// Fade in the environmental decoration game objects
+    /// </summary>
+    private void FadeInEnvironmentLighting()
+    {
+        // Create new material to fade in
+        Material material = new Material(GameResources.Instance.variableLitShader);
+
+        // Get all environment components in room
+        Environment[] environmentComponents = GetComponentsInChildren<Environment>();
+
+        // Loop through each environment component object
+        foreach (Environment environmentComponent in environmentComponents)
+        {
+            // Check if the environment component has a sprite renderer
+            if (environmentComponent.spriteRenderer != null)
+            {
+                // Set the material for the sprite renderer to the newly created material above
+                environmentComponent.spriteRenderer.material = material;
+            }
+        }
+
+        // Start a coroutine to fade in the environment lighting
+        StartCoroutine(FadeInEnvironmentLightingRoutine(material, environmentComponents));
+    }
+
+    /// <summary>
+    /// Fade in the environmental decoration game objects coroutine
+    /// </summary>
+    /// <param name="material"></param>
+    /// <param name="environmentComponents"></param>
+    /// <returns>Coroutine</returns>
+    private IEnumerator FadeInEnvironmentLightingRoutine(Material material, Environment[] environmentComponents)
+    {
+        // Fade in the lighting for the objects
+        for (float i = 0.05f; i <= 1f; i += Time.deltaTime / Settings.fadeInTime)
+        {
+            material.SetFloat("Alpha_Slider", i);
+            yield return null;
+        }
+
+        // Set environment component material back to lit material
+        foreach (Environment environmentComponent in environmentComponents)
+        {
+            // Check if environment component has a sprite renderer
+            if (environmentComponent.spriteRenderer != null)
+            {
+                // Set the sprite renderer material back to litMaterial
+                environmentComponent.spriteRenderer.material = GameResources.Instance.litMaterial;
+            }
+        }
     }
 
     /// <summary>
