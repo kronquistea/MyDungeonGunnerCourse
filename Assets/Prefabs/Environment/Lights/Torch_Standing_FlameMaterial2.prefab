@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2045409169117817926, guid: 18d859f09ea8bdd469e2fce63cee7a0d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 48f4966adea5f654bb6bea4ade4b7e8a, type: 2}
+      objectReference: {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
     - target: {fileID: 5084168322960439368, guid: 18d859f09ea8bdd469e2fce63cee7a0d, type: 3}
       propertyPath: m_Name
       value: Torch_Standing_FlameMaterial2

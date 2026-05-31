@@ -110,6 +110,27 @@ public class RoomLightingControl : MonoBehaviour
             {
                 // Set the material for the sprite renderer to the newly created material above
                 environmentComponent.spriteRenderer.material = material;
+
+                //Debug.Log("environmentComponent.gameObject.transform.childCount: " + environmentComponent.gameObject.transform.childCount);
+
+                if (environmentComponent.gameObject.transform.childCount > 0)
+                {
+                    GameObject flameGameObject = environmentComponent.gameObject.transform.GetChild(0).gameObject;
+                    SpriteRenderer flameSpriteRenderer = flameGameObject.GetComponent<SpriteRenderer>();
+                    int randomFlameMaterialIndex = Random.Range(0, 2);
+                    switch (randomFlameMaterialIndex)
+                    {
+                        case 0:
+                            flameSpriteRenderer.material = new Material(GameResources.Instance.flameShaderMaterialZero);
+                            break;
+                        case 1:
+                            flameSpriteRenderer.material = new Material(GameResources.Instance.flameShaderMaterialOne);
+                            break;
+                        case 2:
+                            flameSpriteRenderer.material = new Material(GameResources.Instance.flameShaderMaterialTwo);
+                            break;
+                    }
+                }
             }
         }
 

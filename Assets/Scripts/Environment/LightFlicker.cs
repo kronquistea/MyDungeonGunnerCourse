@@ -22,6 +22,8 @@ public class LightFlicker : MonoBehaviour
     private void Start()
     {
         lightFlickerTime = Random.Range(lightFlickerTimeMin, lightFlickerTimeMax);
+
+        light2D.intensity = 0f;
     }
 
     private void Update()

@@ -71,6 +71,21 @@ public class GameResources : MonoBehaviour
     #endregion
     public Shader variableLitShader;
 
+    #region Tooltip
+    [Tooltip("Populate with FlameShaderMaterial")]
+    #endregion
+    public Material flameShaderMaterialZero;
+
+    #region Tooltip
+    [Tooltip("Populate with FlameShaderMaterial1")]
+    #endregion
+    public Material flameShaderMaterialOne;
+
+    #region Tooltip
+    [Tooltip("Populate with FlameShaderMaterial2")]
+    #endregion
+    public Material flameShaderMaterialTwo;
+
     #region Header SPECIAL TILEMAP TILES
     [Space(10)]
     [Header("SPECIAL TILEMAP TILES")]

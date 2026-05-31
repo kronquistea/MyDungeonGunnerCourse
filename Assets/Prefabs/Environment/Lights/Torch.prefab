@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5023556543182932061}
   - component: {fileID: 6598668756621657207}
+  - component: {fileID: 6023597497660059931}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -109,6 +110,17 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!210 &6023597497660059931
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929652101286679042}
+  m_Enabled: 1
+  m_SortingLayerID: -653709415
+  m_SortingLayer: 4
+  m_SortingOrder: 0
 --- !u!1 &4598081904023000275
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2196051031082750839}
   - component: {fileID: 744624932241279130}
+  - component: {fileID: 1958983445529521731}
   m_Layer: 0
   m_Name: TorchHolder
   m_TagString: Untagged
@@ -162,7 +175,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180,8 +193,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229619225
-  m_SortingLayer: 3
+  m_SortingLayerID: -653709415
+  m_SortingLayer: 4
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: f5cc8c7d49e1be94fbaec16d55ebf43a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,6 +207,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1958983445529521731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598081904023000275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e99c5ed95207a4887e9a0601316c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 744624932241279130}
 --- !u!1 &8489267802921453312
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +271,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8556be20b5f346149bb8497e4b4dfbdc, type: 2}
+  - {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -263,8 +289,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229619225
-  m_SortingLayer: 3
+  m_SortingLayerID: -653709415
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 177c2eef9fd9a9644ac0076931aae8a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -334,6 +360,6 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8619810310725964391}
   m_Enabled: 1
-  m_SortingLayerID: -229619225
-  m_SortingLayer: 3
+  m_SortingLayerID: -653709415
+  m_SortingLayer: 4
   m_SortingOrder: 0

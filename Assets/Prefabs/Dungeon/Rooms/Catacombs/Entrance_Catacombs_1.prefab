@@ -19867,6 +19867,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torch_Standing_FlameMaterial2
       objectReference: {fileID: 0}
+    - target: {fileID: 957888538181586532, guid: 205a619f91f77ce4cbac25cbba592431, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088566352494598915, guid: 205a619f91f77ce4cbac25cbba592431, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1668308805035925497, guid: 205a619f91f77ce4cbac25cbba592431, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -19909,6 +19917,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1668308805035925497, guid: 205a619f91f77ce4cbac25cbba592431, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979580837404608720, guid: 205a619f91f77ce4cbac25cbba592431, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516980806517394945, guid: 205a619f91f77ce4cbac25cbba592431, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -20341,9 +20357,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1862508684338055091, guid: c5876b27c12081e48ab594e0391124a6, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1984031485012054740, guid: c5876b27c12081e48ab594e0391124a6, type: 3}
       propertyPath: m_Name
       value: Torch_Black_FlameMaterial
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984031485012054740, guid: c5876b27c12081e48ab594e0391124a6, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041771246808912992, guid: c5876b27c12081e48ab594e0391124a6, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985589314417906353, guid: c5876b27c12081e48ab594e0391124a6, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5876b27c12081e48ab594e0391124a6, type: 3}
@@ -20421,9 +20453,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2213096327042767384}
     m_Modifications:
+    - target: {fileID: 1071439758292090620, guid: 18d859f09ea8bdd469e2fce63cee7a0d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4465290721798715437, guid: 18d859f09ea8bdd469e2fce63cee7a0d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962650127631183151, guid: 18d859f09ea8bdd469e2fce63cee7a0d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5084168322960439368, guid: 18d859f09ea8bdd469e2fce63cee7a0d, type: 3}
       propertyPath: m_Name
       value: Torch_Standing_FlameMaterial
+      objectReference: {fileID: 0}
+    - target: {fileID: 5084168322960439368, guid: 18d859f09ea8bdd469e2fce63cee7a0d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6693057883702061525, guid: 18d859f09ea8bdd469e2fce63cee7a0d, type: 3}
       propertyPath: m_RootOrder
@@ -20607,9 +20655,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2213096327042767384}
     m_Modifications:
+    - target: {fileID: 1012408618841019708, guid: 74cb46d2604a3d940a4c20c03ca1f0a1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406120010389525485, guid: 74cb46d2604a3d940a4c20c03ca1f0a1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903460608582223599, guid: 74cb46d2604a3d940a4c20c03ca1f0a1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5070156708118221704, guid: 74cb46d2604a3d940a4c20c03ca1f0a1, type: 3}
       propertyPath: m_Name
       value: Torch_Black_FlameMaterial1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070156708118221704, guid: 74cb46d2604a3d940a4c20c03ca1f0a1, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6643033895725597205, guid: 74cb46d2604a3d940a4c20c03ca1f0a1, type: 3}
       propertyPath: m_RootOrder
