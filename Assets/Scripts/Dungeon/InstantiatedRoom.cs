@@ -17,7 +17,9 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap collisionTilemap;
     [HideInInspector] public Tilemap minimapTilemap;
     [HideInInspector] public int[,] aStarMovementPenalty; // Use this 2D array to store movement penalties from the tilemaps to be used in AStar pathfinding
+    [HideInInspector] public int[,] aStarItemObstacles; // Used to store positions of moveable items
     [HideInInspector] public Bounds roomColliderBounds;
+    [HideInInspector] public List<MoveItem> moveableItemsList = new List<MoveItem>();
 
     #region Header OBJECT REFERENCES
     [Header("OBJECT REFERENCES")]
@@ -35,6 +37,12 @@ public class InstantiatedRoom : MonoBehaviour
 
         // Save room collider bounds
         roomColliderBounds = boxCollider2D.bounds;
+    }
+
+    private void Start()
+    {
+        // Update moveable item obstacles list
+        UpdateMoveableObstacles();
     }
 
     /// <summary>
@@ -65,6 +73,8 @@ public class InstantiatedRoom : MonoBehaviour
         BlockOffUnusedDoorways();
 
         AddObstaclesAndPrefferedPaths();
+
+        CreateItemObstaclesArray();
 
         AddDoorsToRooms();
 
@@ -431,6 +441,75 @@ public class InstantiatedRoom : MonoBehaviour
 
         EnableRoomCollider();
     }
+
+    private void CreateItemObstaclesArray()
+    {
+        // This array will be populated during gameplay with any moveable obstacles
+        aStarItemObstacles = new int[room.templateUpperBounds.x - room.templateLowerBounds.x + 1, room.templateUpperBounds.y - room.templateLowerBounds.y + 1];
+    }
+
+    /// <summary>
+    /// Initialize item obstacles array with default AStar movement penalty values
+    /// </summary>
+    private void InitializeItemObstaclesArray()
+    {
+        for (int x = 0; x < (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); x++)
+        {
+            for (int y = 0; y < (room.templateUpperBounds.y - room.templateLowerBounds.y + 1); y++)
+            {
+                aStarItemObstacles[x, y] = Settings.defaultAStarMovementPenalty;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Update the arary of moveable obstacles
+    /// </summary>
+    public void UpdateMoveableObstacles()
+    {
+        InitializeItemObstaclesArray();
+
+        // Loop through each moveable item and set collider bounds
+        foreach (MoveItem moveItem in moveableItemsList)
+        {
+            Vector3Int colliderBoundsMin = grid.WorldToCell(moveItem.boxCollider2D.bounds.min);
+            Vector3Int colliderBoundsMax = grid.WorldToCell(moveItem.boxCollider2D.bounds.max);
+
+            // Loop through each cell that the moveable item's box collider takes up and set the movement penalty for that cell position in the room to 0 (blocked path)
+            for (int i = colliderBoundsMin.x; i <= colliderBoundsMax.x; i++)
+            {
+                for (int j = colliderBoundsMin.y; j <= colliderBoundsMax.y; j++)
+                {
+                    //Use pure grid position rather than room cell position, putting a zero (0) to indicate an obstacle at said position
+                    aStarItemObstacles[i - room.templateLowerBounds.x, j - room.templateLowerBounds.y] = 0;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Used for debugging - shows the position of the table obstacles
+    /// (MUST BE COMMENTED OUT/REMOVED BEFORE UPDATING ROOM PREFABS)
+    /// </summary>
+/*    private void OnDrawGizmos()
+    {
+        // Loop through the room grid cells
+        for (int i = 0; i < (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); i++)
+        {
+            for (int j = 0; j < (room.templateUpperBounds.y - room.templateLowerBounds.y + 1); j++)
+            {
+                // Check if an item (which impedes AStar pathfinding) is at the current loop iteration
+                if (aStarItemObstacles[i, j] == 0)
+                {
+                    // Get the world cell position of the item
+                    Vector3 worldCellPos = grid.CellToWorld(new Vector3Int(i + room.templateLowerBounds.x, j + room.templateLowerBounds.y, 0));
+
+                    // Draw a wire cube at the world position where the item is present (offset by 0.5f to get the center)
+                    Gizmos.DrawWireCube(new Vector3(worldCellPos.x + 0.5f, worldCellPos.y + 0.5f, 0), Vector3.one);
+                }
+            }
+        }
+    }*/
 
     #region Validation
 #if UNITY_EDITOR

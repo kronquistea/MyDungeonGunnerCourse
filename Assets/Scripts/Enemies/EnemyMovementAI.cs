@@ -20,7 +20,8 @@ public class EnemyMovementAI : MonoBehaviour
     private WaitForFixedUpdate waitForFixedUpdate;
     [HideInInspector] public float moveSpeed;
     private bool chasePlayer = false;
-    [HideInInspector] public int updateFrameNumber = 1; // Default to 1
+    [HideInInspector] public int updateFrameNumber = 1; // Default to 1, set by enemy spawner
+    private List<Vector2Int> surroundingPositionList = new List<Vector2Int>(); // List to hold positions surrounding player for moveable obstacles
 
     private void Awake()
     {
@@ -154,46 +155,73 @@ public class EnemyMovementAI : MonoBehaviour
             playerCellPosition.y - currentRoom.templateLowerBounds.y
         );
 
-        // If the cell in the room has a movement penalty of 0 (as decided in the Settings script) then that cell "is" an obstacle
-        int obstacle = currentRoom.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x, adjustedPlayerCellPosition.y];
+        // If the cell in the room has a movement penalty of 0 (as decided in the Settings script) then that cell is an obstacle
+        int obstacle = Mathf.Min
+            (
+                currentRoom.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x, adjustedPlayerCellPosition.y], 
+                currentRoom.instantiatedRoom.aStarItemObstacles[adjustedPlayerCellPosition.x, adjustedPlayerCellPosition.y]
+            );
 
         // If the player is not on a cell marked as an obstacle (movement penalty != 0) then return that position
         if (obstacle != 0)
         {
             return playerCellPosition;
         }
-        // Find the nearest surrounding cell that is not an obstacle. Think of half-height collision tiles.
+        // Find the nearest surrounding cell that is not an obstacle. Think of half-height collision tiles and moveable obstacles (like tables).
         else
         {
-            // Check all adjacent (orthogonally and diagonally) cells
+            // Empty surrounding position list
+            surroundingPositionList.Clear();
+
+            // Loop through surrounding positions
             for (int i = -1; i <= 1; i++)
             {
                 for (int j = -1; j <= 1; j++)
                 {
-                    // If on the current cell (which we know is an obstacle, skip it)
-                    if (i == 0 && j == 0)
+                    // Skip past player position
+                    if (j == 0 && i == 0)
                     {
                         continue;
                     }
 
-                    // Try-catch block in case of index-out-of-bounds error
-                    try
-                    {
-                        obstacle = currentRoom.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x + i, adjustedPlayerCellPosition.y + j];
-                        if (obstacle != 0)
-                        {
-                            return new Vector3Int(playerCellPosition.x + i, playerCellPosition.y + j, 0);
-                        }
-                    } 
-                    catch
-                    {
-                        continue;
-                    }
+                    // Add position coordinates to surroundingPositionList
+                    surroundingPositionList.Add(new Vector2Int(i, j));
                 }
             }
 
-            // No non-obstacle cells surrounding the player so just return the player position
-            return playerCellPosition;
+            // Loop through all surrounding positions
+            for (int i = 0; i < 8; i++)
+            {
+                // Generate a random index from the list
+                int index = Random.Range(0, surroundingPositionList.Count);
+
+                try
+                {
+                    // Get the min between aStarMovementPenality and aStarItemObstacles at the position being checked (a min of zero means there is an obstacle at the location)
+                    obstacle = Mathf.Min
+                        (
+                            currentRoom.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x + surroundingPositionList[index].x, adjustedPlayerCellPosition.y + surroundingPositionList[index].y],
+                            currentRoom.instantiatedRoom.aStarItemObstacles[adjustedPlayerCellPosition.x + surroundingPositionList[index].x, adjustedPlayerCellPosition.y + surroundingPositionList[index].y]
+                        );
+
+                    // Check if there is no obstacle at the surrounding position that is being checked
+                    if (obstacle != 0)
+                    {
+                        // Return the location of the randomly selected surrounding position
+                        return new Vector3Int(playerCellPosition.x + surroundingPositionList[index].x, playerCellPosition.y + surroundingPositionList[index].y, 0);
+                    }
+                }
+                catch
+                {
+                    // If any errors occurred (like index-out-of-bounds errors), continue to next surrounding position iteration
+                }
+
+                // Remove the checked position from the surrounding position list (as it was already checked)
+                surroundingPositionList.RemoveAt(index);
+            }
+
+            // If no non-obstacle cells were found surrounding the player, send the enemy in the direction of one of the enemy spawn positions
+            return (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Length)];
         }
     }
 
