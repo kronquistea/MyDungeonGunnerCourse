@@ -97,6 +97,9 @@ public class PlayerControl : MonoBehaviour
         // Process the player weapon input
         WeaponInput();
 
+        // Process the player use item input
+        UseItemInput();
+
         // Player roll cooldown timer
         PlayerRollCooldownTimer();
     }
@@ -360,6 +363,34 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Minus))
         {
             SetCurrentWeaponToFirstInTheList();
+        }
+    }
+
+    /// <summary>
+    /// Use the nearest item within 2 unity units from the player
+    /// </summary>
+    private void UseItemInput()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            // Specify use item distance
+            float useItemRadius = 2f;
+
+            // Get any useable items based on the specified distance from the player
+            Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(player.GetPlayerPosition(), useItemRadius);
+
+            // Loop through each of the detected items in the radius of the player to see if any of them are useable
+            foreach (Collider2D collider2D in collider2DArray)
+            {
+                // Load the iUseable component for the item trying to be used
+                IUseable iUseable = collider2D.GetComponent<IUseable>();
+
+                // Check that the iUseable component is populated for the item the player is trying to use
+                if (iUseable != null)
+                {
+                    iUseable.UseItem();
+                }
+            }
         }
     }
 
