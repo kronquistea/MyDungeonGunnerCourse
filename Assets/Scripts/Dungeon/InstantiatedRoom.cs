@@ -19,6 +19,14 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public int[,] aStarMovementPenalty; // Use this 2D array to store movement penalties from the tilemaps to be used in AStar pathfinding
     [HideInInspector] public Bounds roomColliderBounds;
 
+    #region Header OBJECT REFERENCES
+    [Header("OBJECT REFERENCES")]
+    #endregion
+    #region Tooltip
+    [Tooltip("Populate with the environment child placeholder gameobject")]
+    #endregion
+    [SerializeField] private GameObject environmentGameObject;
+
     private BoxCollider2D boxCollider2D;
 
     private void Awake()
@@ -36,7 +44,7 @@ public class InstantiatedRoom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // If the player triggered the collider
-        if (collision.tag == Settings.playerTag && room != GameManager.Instance.GetCurrentRoom())
+        if (collision.CompareTag(Settings.playerTag) && room != GameManager.Instance.GetCurrentRoom())
         {
             // Set room as visited
             this.room.isPreviouslyVisited = true;
@@ -77,27 +85,27 @@ public class InstantiatedRoom : MonoBehaviour
 
         foreach (Tilemap tilemap in tilemaps)
         {
-            if (tilemap.gameObject.tag == "groundTilemap")
+            if (tilemap.gameObject.CompareTag("groundTilemap"))
             {
                 groundTilemap = tilemap;
             }
-            else if (tilemap.gameObject.tag == "decoration1Tilemap")
+            else if (tilemap.gameObject.CompareTag("decoration1Tilemap"))
             {
                 decoration1Tilemap = tilemap;
             }
-            else if (tilemap.gameObject.tag == "decoration2Tilemap")
+            else if (tilemap.gameObject.CompareTag("decoration2Tilemap"))
             {
                 decoration2Tilemap = tilemap;
             }
-            else if (tilemap.gameObject.tag == "frontTilemap")
+            else if (tilemap.gameObject.CompareTag("frontTilemap"))
             {
                 frontTilemap = tilemap;
             }
-            else if (tilemap.gameObject.tag == "collisionTilemap")
+            else if (tilemap.gameObject.CompareTag("collisionTilemap"))
             {
                 collisionTilemap = tilemap;
             }
-            else if (tilemap.gameObject.tag == "minimapTilemap")
+            else if (tilemap.gameObject.CompareTag("minimapTilemap"))
             {
                 minimapTilemap = tilemap;
             }
@@ -351,6 +359,32 @@ public class InstantiatedRoom : MonoBehaviour
     }
 
     /// <summary>
+    /// Activate environment game objects
+    /// </summary>
+    public void ActivateEnvironmentGameObjects()
+    {
+        // Check if the environment gameobject exists
+        if (environmentGameObject != null)
+        {
+            // Set the environment gameobject to active
+            environmentGameObject.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// Deactivate environment game objects
+    /// </summary>
+    public void DeactivateEnvironmentGameObjects()
+    {
+        // Check if the environment gameobject exists
+        if (environmentGameObject != null)
+        {
+            // Set the environment gameobjec to inactive
+            environmentGameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
     /// Lock the room doors
     /// </summary>
     public void LockDoors()
@@ -397,4 +431,14 @@ public class InstantiatedRoom : MonoBehaviour
 
         EnableRoomCollider();
     }
+
+    #region Validation
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        // OBJECT REFERENCES
+        HelperUtilities.ValidateCheckNullValue(this, nameof(environmentGameObject), environmentGameObject);
+    }
+#endif
+    #endregion
 }

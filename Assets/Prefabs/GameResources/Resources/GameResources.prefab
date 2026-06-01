@@ -50,6 +50,9 @@ MonoBehaviour:
   dimmedMaterial: {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
   litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   variableLitShader: {fileID: -6465566751694194690, guid: db3ae0f1d57372b42b7aed0eb7ebbbf6, type: 3}
+  flameShaderMaterialZero: {fileID: 2100000, guid: 8556be20b5f346149bb8497e4b4dfbdc, type: 2}
+  flameShaderMaterialOne: {fileID: 2100000, guid: add26dd5fdc48e44c9a8298ec4929141, type: 2}
+  flameShaderMaterialTwo: {fileID: 2100000, guid: 48f4966adea5f654bb6bea4ade4b7e8a, type: 2}
   enemyUnwalkableCollisionTilesArray:
   - {fileID: 11400000, guid: 37e2c9e0227bfbc409cd632b9bd0c81f, type: 2}
   - {fileID: 11400000, guid: 98f177f8276c38b429705e6720c48672, type: 2}
