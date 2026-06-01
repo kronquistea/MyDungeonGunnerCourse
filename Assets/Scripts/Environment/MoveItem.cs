@@ -14,7 +14,7 @@ public class MoveItem : MonoBehaviour
     [SerializeField] private SoundEffectSO moveSoundEffect;
 
     [HideInInspector] public BoxCollider2D boxCollider2D;
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D rigidBody2D;
     private InstantiatedRoom instantiatedRoom;
     private Vector3 previousPosition;
 
@@ -22,7 +22,7 @@ public class MoveItem : MonoBehaviour
     {
         // Load components
         boxCollider2D = GetComponent<BoxCollider2D>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidBody2D = GetComponent<Rigidbody2D>();
         instantiatedRoom = GetComponentInParent<InstantiatedRoom>();
 
         // Add current item to item obstacles list
@@ -53,7 +53,7 @@ public class MoveItem : MonoBehaviour
         previousPosition = transform.position;
 
         // Check if should play moving item sound effect
-        if (Mathf.Abs(rigidbody2D.velocity.x) > 0.001f || Mathf.Abs(rigidbody2D.velocity.y) > 0.001f)
+        if (Mathf.Abs(rigidBody2D.velocity.x) > 0.001f || Mathf.Abs(rigidBody2D.velocity.y) > 0.001f)
         {
             // Check if sound effect exists and make sure sound is only played every 10 frames
             if (moveSoundEffect != null && Time.frameCount % 10 == 0)
