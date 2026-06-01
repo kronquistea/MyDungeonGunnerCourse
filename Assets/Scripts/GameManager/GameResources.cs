@@ -52,6 +52,11 @@ public class GameResources : MonoBehaviour
     #endregion
     public SoundEffectSO doorOpenCloseSoundEffect;
 
+    #region Tooltip
+    [Tooltip("Populate with the table flip sound effect")]
+    #endregion
+    public SoundEffectSO tableFlip;
+
     #region Header MATERIALS
     [Space(10)]
     [Header("Materials")]
@@ -129,6 +134,7 @@ public class GameResources : MonoBehaviour
         // SOUNDS
         HelperUtilities.ValidateCheckNullValue(this, nameof(soundsMasterMixerGroup), soundsMasterMixerGroup);
         HelperUtilities.ValidateCheckNullValue(this, nameof(doorOpenCloseSoundEffect), doorOpenCloseSoundEffect);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(tableFlip), tableFlip);
 
         // MATERIALS
         HelperUtilities.ValidateCheckNullValue(this, nameof(dimmedMaterial), dimmedMaterial);
