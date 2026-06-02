@@ -40,6 +40,12 @@ public class Ammo : MonoBehaviour, IFireable
             isAmmoMaterialSet = true;
         }
 
+        // Check if the ammo movement should be overriden
+        if (overrideAmmoMovement)
+        {
+            return;
+        }
+
         // Calculate distance vector to move ammo
         Vector3 distanceVector = fireDirectionVector * ammoSpeed * Time.deltaTime;
 

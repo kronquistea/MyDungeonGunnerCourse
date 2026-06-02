@@ -3701,6 +3701,21 @@ MonoBehaviour:
   - poolSize: 20
     prefab: {fileID: 899998294173253778, guid: ffdba3ece955d0642b050fdde145dfd1, type: 3}
     componentType: AmmoHitEffect
+  - poolSize: 10
+    prefab: {fileID: 1014724154957011759, guid: 622f5662cd689674c98cb8d10f26ee1e, type: 3}
+    componentType: IFireable
+  - poolSize: 10
+    prefab: {fileID: 2969395994139452390, guid: 89425bf7e8fb4a148835dec1a9f8238d, type: 3}
+    componentType: IFireable
+  - poolSize: 10
+    prefab: {fileID: 1304235792170210798, guid: d39394e9008f42f4591c6ab24239b286, type: 3}
+    componentType: IFireable
+  - poolSize: 10
+    prefab: {fileID: 4648539115400716633, guid: a81b99bcee67808429dfa01bdfcae0eb, type: 3}
+    componentType: IFireable
+  - poolSize: 10
+    prefab: {fileID: 3880663814527772164, guid: f320fc79dc1273a4d8f1806bee993aa8, type: 3}
+    componentType: IFireable
 --- !u!4 &2084425195
 Transform:
   m_ObjectHideFlags: 0
