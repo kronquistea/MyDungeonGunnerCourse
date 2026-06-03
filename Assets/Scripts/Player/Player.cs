@@ -178,4 +178,24 @@ public class Player : MonoBehaviour
 
         return weapon;
     }
+
+    /// <summary>
+    /// Check if a weapon is already being held by the player (in the player's "inventory")
+    /// </summary>
+    /// <param name="weaponDetails"></param>
+    /// <returns>True if passed in weapon is already held by the player, false otherwise</returns>
+    public bool IsWeaponHeldByPlayer(WeaponDetailsSO weaponDetails)
+    {
+        // Loop through all the weapon the player is currently holding
+        foreach (Weapon weapon in weaponList)
+        {
+            // Check if the current weapon being checked (in the loop) is the same as the weapon to be checked (function parameter)
+            if (weapon.weaponDetails == weaponDetails)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -23,25 +22,27 @@ public class GameResources : MonoBehaviour
     #region Header DUNGEON
     [Space(10)]
     [Header("Dungeon")]
-    #endregion
+    
     #region Tooltip
     [Tooltip("Populate with the dungeon RoomNodeTypeListSO")]
     #endregion
     public RoomNodeTypeListSO roomNodeTypeList;
+    #endregion
 
     #region Header PLAYER
     [Space(10)]
     [Header("PLAYER")]
-    #endregion
+    
     #region Tooltip
     [Tooltip("The current player scriptable object - this is used to reference the current player between scenes")]
     #endregion
     public CurrentPlayerSO currentPlayer;
+    #endregion
 
     #region Header SOUNDS
     [Space(10)]
     [Header("SOUNDS")]
-    #endregion
+    
     #region Tooltip
     [Tooltip("Populate with the sounds master mixer group")]
     #endregion
@@ -57,10 +58,31 @@ public class GameResources : MonoBehaviour
     #endregion
     public SoundEffectSO tableFlip;
 
+    #region Tooltip
+    [Tooltip("Populate with the chest open sound effect")]
+    #endregion
+    public SoundEffectSO chestOpen;
+
+    #region Tooltip
+    [Tooltip("Populate with the health pickup sound effect")]
+    #endregion
+    public SoundEffectSO healthPickup;
+
+    #region Tooltip
+    [Tooltip("Populate with the weapon pickup sound effect")]
+    #endregion
+    public SoundEffectSO weaponPickup;
+
+    #region Tooltip
+    [Tooltip("Populate with the ammo pickup sound effect")]
+    #endregion
+    public SoundEffectSO ammoPickup;
+    #endregion
+
     #region Header MATERIALS
     [Space(10)]
     [Header("Materials")]
-    #endregion
+    
     #region Tooltip
     [Tooltip("Dimmed Material")]
     #endregion
@@ -77,6 +99,11 @@ public class GameResources : MonoBehaviour
     public Shader variableLitShader;
 
     #region Tooltip
+    [Tooltip("Populate with the materialize shader")]
+    #endregion
+    public Shader materializeShader;
+
+    #region Tooltip
     [Tooltip("Populate with FlameShaderMaterial")]
     #endregion
     public Material flameShaderMaterialZero;
@@ -90,11 +117,12 @@ public class GameResources : MonoBehaviour
     [Tooltip("Populate with FlameShaderMaterial2")]
     #endregion
     public Material flameShaderMaterialTwo;
+    #endregion
 
     #region Header SPECIAL TILEMAP TILES
     [Space(10)]
     [Header("SPECIAL TILEMAP TILES")]
-    #endregion
+    
     #region Tooltip
     [Tooltip("Collision tiles that the enemies can navigate to")]
     #endregion
@@ -104,11 +132,12 @@ public class GameResources : MonoBehaviour
     [Tooltip("Preferred path tile for enemy navigation")]
     #endregion
     public TileBase preferredEnemyTilePath;
+    #endregion
 
     #region Header UI
     [Space(10)]
     [Header("UI")]
-    #endregion
+    
     #region Tooltip
     [Tooltip("Populate with heart icon prefab")]
     #endregion
@@ -118,8 +147,27 @@ public class GameResources : MonoBehaviour
     [Tooltip("Populate with ammo icon prefab")]
     #endregion
     public GameObject ammoIconPrefab;
+    #endregion
 
+    #region Header CHESTS
+    [Space(10)]
+    [Header("CHEST")]
 
+    #region Tooltip
+    [Tooltip("Chest item prefab")]
+    #endregion
+    public GameObject chestItemPrefab;
+
+    #region Tooltip
+    [Tooltip("Populate with heart icon sprite")]
+    #endregion
+    public Sprite heartIcon;
+
+    #region Tooltip
+    [Tooltip("Populate with bullet icon sprite")]
+    #endregion
+    public Sprite bulletIcon;
+    #endregion
 
     #region Validation
 #if UNITY_EDITOR
@@ -135,11 +183,19 @@ public class GameResources : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(soundsMasterMixerGroup), soundsMasterMixerGroup);
         HelperUtilities.ValidateCheckNullValue(this, nameof(doorOpenCloseSoundEffect), doorOpenCloseSoundEffect);
         HelperUtilities.ValidateCheckNullValue(this, nameof(tableFlip), tableFlip);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(chestOpen), chestOpen);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(healthPickup), healthPickup);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(weaponPickup), weaponPickup);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(ammoPickup), ammoPickup);
 
         // MATERIALS
         HelperUtilities.ValidateCheckNullValue(this, nameof(dimmedMaterial), dimmedMaterial);
         HelperUtilities.ValidateCheckNullValue(this, nameof(litMaterial), litMaterial);
         HelperUtilities.ValidateCheckNullValue(this, nameof(variableLitShader), variableLitShader);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(materializeShader), materializeShader);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(flameShaderMaterialZero), flameShaderMaterialZero);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(flameShaderMaterialOne), flameShaderMaterialOne);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(flameShaderMaterialTwo), flameShaderMaterialTwo);
 
         // SPECIAL TILEMAP TILES
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(enemyUnwalkableCollisionTilesArray), enemyUnwalkableCollisionTilesArray);
@@ -148,6 +204,11 @@ public class GameResources : MonoBehaviour
         // UI
         HelperUtilities.ValidateCheckNullValue(this, nameof(heartIconPrefab), heartIconPrefab);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoIconPrefab), ammoIconPrefab);
+
+        // CHESTS
+        HelperUtilities.ValidateCheckNullValue(this, nameof(chestItemPrefab), chestItemPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(heartIcon), heartIcon);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(bulletIcon), bulletIcon);
     }
 #endif
     #endregion
