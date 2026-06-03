@@ -22,27 +22,28 @@ public class GameResources : MonoBehaviour
     #region Header DUNGEON
     [Space(10)]
     [Header("Dungeon")]
-    
+    #endregion
+
     #region Tooltip
     [Tooltip("Populate with the dungeon RoomNodeTypeListSO")]
     #endregion
     public RoomNodeTypeListSO roomNodeTypeList;
-    #endregion
 
     #region Header PLAYER
     [Space(10)]
     [Header("PLAYER")]
-    
+    #endregion
+
     #region Tooltip
     [Tooltip("The current player scriptable object - this is used to reference the current player between scenes")]
     #endregion
     public CurrentPlayerSO currentPlayer;
-    #endregion
 
     #region Header SOUNDS
     [Space(10)]
     [Header("SOUNDS")]
-    
+    #endregion
+
     #region Tooltip
     [Tooltip("Populate with the sounds master mixer group")]
     #endregion
@@ -77,12 +78,12 @@ public class GameResources : MonoBehaviour
     [Tooltip("Populate with the ammo pickup sound effect")]
     #endregion
     public SoundEffectSO ammoPickup;
-    #endregion
 
     #region Header MATERIALS
     [Space(10)]
     [Header("Materials")]
-    
+    #endregion
+
     #region Tooltip
     [Tooltip("Dimmed Material")]
     #endregion
@@ -117,12 +118,12 @@ public class GameResources : MonoBehaviour
     [Tooltip("Populate with FlameShaderMaterial2")]
     #endregion
     public Material flameShaderMaterialTwo;
-    #endregion
 
     #region Header SPECIAL TILEMAP TILES
     [Space(10)]
     [Header("SPECIAL TILEMAP TILES")]
-    
+    #endregion
+
     #region Tooltip
     [Tooltip("Collision tiles that the enemies can navigate to")]
     #endregion
@@ -132,12 +133,12 @@ public class GameResources : MonoBehaviour
     [Tooltip("Preferred path tile for enemy navigation")]
     #endregion
     public TileBase preferredEnemyTilePath;
-    #endregion
 
     #region Header UI
     [Space(10)]
     [Header("UI")]
-    
+    #endregion
+
     #region Tooltip
     [Tooltip("Populate with heart icon prefab")]
     #endregion
@@ -147,11 +148,11 @@ public class GameResources : MonoBehaviour
     [Tooltip("Populate with ammo icon prefab")]
     #endregion
     public GameObject ammoIconPrefab;
-    #endregion
-
+    
     #region Header CHESTS
     [Space(10)]
     [Header("CHEST")]
+    #endregion
 
     #region Tooltip
     [Tooltip("Chest item prefab")]
@@ -167,7 +168,6 @@ public class GameResources : MonoBehaviour
     [Tooltip("Populate with bullet icon sprite")]
     #endregion
     public Sprite bulletIcon;
-    #endregion
 
     #region Validation
 #if UNITY_EDITOR

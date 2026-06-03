@@ -14,8 +14,8 @@ public class ChestItem : MonoBehaviour
     private void Awake()
     {
         // Load components
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        textTMP = GetComponent<TextMeshPro>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        textTMP = GetComponentInChildren<TextMeshPro>();
         materializeEffect = GetComponent<MaterializeEffect>();
     }
 
