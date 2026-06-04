@@ -189,4 +189,32 @@ public class Health : MonoBehaviour
     {
         return startingHealth;
     }
+
+    /// <summary>
+    /// Add a certain percentage of health back to the gameobject which attaches the specific health component
+    /// </summary>
+    /// <param name="healthPercent"></param>
+    public void AddHealth(int healthPercent)
+    {
+        // Calculate the amount of health to actually restore to the gameobject
+        int healthIncrease = Mathf.RoundToInt((startingHealth * healthPercent) / 100f);
+
+        // Calculate the total health if the health increase were to be applied
+        int totalHealth = currentHealth + healthIncrease;
+
+        // Check if the health after the increase is greater than the starting health (max health)
+        if (totalHealth > startingHealth)
+        {
+            // Top of gameobject health (max it out to starting health amount)
+            currentHealth = startingHealth;
+        }
+        else
+        {
+            // Restore health up to percentage calculated
+            currentHealth = totalHealth;
+        }
+
+        // Call a health event with damage = 0 to ensure health related event parameters are updated
+        CallHealthEvent(0);
+    }
 }

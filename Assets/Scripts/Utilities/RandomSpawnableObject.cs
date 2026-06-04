@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomSpawnableObject<T>
 {
-    public struct chanceBoundaries
+    public struct ChanceBoundaries
     {
         public T spawnableObject;
         public int lowBoundaryValue;
@@ -12,7 +12,7 @@ public class RandomSpawnableObject<T>
     }
 
     private int ratioValueTotal = 0;
-    private List<chanceBoundaries> chanceBoundariesList = new List<chanceBoundaries>();
+    private List<ChanceBoundaries> chanceBoundariesList = new List<ChanceBoundaries>();
     private List<SpawnableObjectsByLevel<T>> spawnableObjectsByLevelList;
 
     public RandomSpawnableObject(List<SpawnableObjectsByLevel<T>> spawnableObjectsByLevelList)
@@ -50,7 +50,7 @@ public class RandomSpawnableObject<T>
                     ratioValueTotal += spawnableObjectRatio.ratio;
 
                     // Create a new entry in the chance boundaries list for the current spawnable object
-                    chanceBoundariesList.Add(new chanceBoundaries()
+                    chanceBoundariesList.Add(new ChanceBoundaries()
                     {
                         spawnableObject = spawnableObjectRatio.dungeonObject,
                         lowBoundaryValue = lowerBoundary,
@@ -69,7 +69,7 @@ public class RandomSpawnableObject<T>
         int lookUpValue = Random.Range(0, ratioValueTotal);
 
         // Loop through each of the entries in the chance boundaries list
-        foreach (chanceBoundaries spawnChance in chanceBoundariesList)
+        foreach (ChanceBoundaries spawnChance in chanceBoundariesList)
         {
             // If the random value is within the current spawnable object's boundaries
             if (lookUpValue >= spawnChance.lowBoundaryValue && lookUpValue <= spawnChance.highBoundaryValue)
