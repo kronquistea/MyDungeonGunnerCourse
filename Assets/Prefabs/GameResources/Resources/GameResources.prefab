@@ -68,3 +68,4 @@ MonoBehaviour:
   chestItemPrefab: {fileID: 2974847867148492328, guid: c824698b3564afd44bd12c9f6d2ce519, type: 3}
   heartIcon: {fileID: 21300000, guid: 93356131eec0f44458223985928ac6e3, type: 3}
   bulletIcon: {fileID: 21300000, guid: a2482871b46d396438236c07b6402283, type: 3}
+  minimapSkullPrefab: {fileID: 2251290209046428235, guid: fa91bd1f49b9595469146234d9855b30, type: 3}

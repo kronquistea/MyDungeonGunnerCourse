@@ -52,6 +52,8 @@ public class GameManager : SingletonMonobehavior<GameManager>
 
     private InstantiatedRoom bossRoom;
 
+    private bool isFading = false;
+
     protected override void Awake()
     {
         // Call base class
@@ -216,9 +218,34 @@ public class GameManager : SingletonMonobehavior<GameManager>
                 gameState = GameState.playingLevel;
                 RoomEnemiesDefeated(); // Avoid issues if only rooms in dungeon are entrance, corridor, boss room
                 break;
+
+            case GameState.playingLevel:
+                // Check if the player is holding the tab key
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    DisplayDungeonOverviewMap();
+                }
+                break;
+
+            case GameState.dungeonOverviewMap:
+                // Check if the play released the tab key
+                if (Input.GetKeyUp(KeyCode.Tab))
+                {
+                    DungeonMap.Instance.ClearDungeonOverviewMap();
+                }
+                break;
+
+            case GameState.bossStage: // Enable the player to open the map after clearing all rooms, but before fighting the boss
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    DisplayDungeonOverviewMap();
+                }
+                break;
+
             case GameState.levelCompleted:
                 StartCoroutine(LevelCompleted()); // Display level completed text
                 break;
+
             case GameState.gameWon:
                 // Only process game won one time
                 if (previousGameState != GameState.gameWon)
@@ -226,6 +253,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
                     StartCoroutine(GameWon());
                 }
                 break;
+
             case GameState.gameLost:
                 // Only process game lost one time
                 if (previousGameState != GameState.gameLost)
@@ -234,6 +262,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
                     StartCoroutine(GameLost());
                 }
                 break;
+
             case GameState.restartGame:
                 RestartGame();
                 break;
@@ -306,6 +335,22 @@ public class GameManager : SingletonMonobehavior<GameManager>
             // Start the BossStage coroutine
             StartCoroutine(BossStage());
         }
+    }
+
+    /// <summary>
+    /// Display the dungeon overview map
+    /// </summary>
+    private void DisplayDungeonOverviewMap()
+    {
+        // Check if the screen is currently fading
+        if (isFading)
+        {
+            // If so, do not allow the player to open the map
+            return;
+        }
+
+        // Open the dungeon overview map
+        DungeonMap.Instance.DisplayDungeonOverviewmap();
     }
 
     /// <summary>
@@ -478,6 +523,9 @@ public class GameManager : SingletonMonobehavior<GameManager>
     /// <returns>Coroutine</returns>
     private IEnumerator Fade(float startFadeAlpha, float targetFadeAlpha, float fadeSeconds, Color backgroundColor)
     {
+        // Signal to not allow opening dungeon overview map while the screen is fading
+        isFading = true;
+
         Image image = canvasGroup.GetComponent<Image>();
         image.color = backgroundColor;
 
@@ -496,6 +544,9 @@ public class GameManager : SingletonMonobehavior<GameManager>
             // Wait until next frame
             yield return null;
         }
+
+        // Signal to re-allow opening dungeon overview map after the screen is done fading
+        isFading = false;
     }
 
     /// <summary>
