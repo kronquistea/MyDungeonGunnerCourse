@@ -559,7 +559,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
     /// <param name="fadeSeconds"></param>
     /// <param name="backgroundColor"></param>
     /// <returns>Coroutine</returns>
-    private IEnumerator Fade(float startFadeAlpha, float targetFadeAlpha, float fadeSeconds, Color backgroundColor)
+    public IEnumerator Fade(float startFadeAlpha, float targetFadeAlpha, float fadeSeconds, Color backgroundColor)
     {
         // Signal to not allow opening dungeon overview map while the screen is fading
         isFading = true;
