@@ -268,7 +268,7 @@ public static class HelperUtilities
     }
 
     /// <summary>
-    /// Positive range debug check - set isZeroAllowed to true if the min and max range values can both be zero.
+    /// Positive range debug check for floats - set isZeroAllowed to true if the min and max range values can both be zero.
     /// </summary>
     /// <param name="thisObject"></param>
     /// <param name="fieldNameMinimum"></param>
@@ -278,6 +278,38 @@ public static class HelperUtilities
     /// <param name="isZeroAllowed"></param>
     /// <returns>True if error</returns>
     public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, float valueToCheckMinimum, string fieldNameMaximum, float valueToCheckMaximum, bool isZeroAllowed)
+    {
+        bool error = false;
+        if (valueToCheckMinimum > valueToCheckMaximum)
+        {
+            Debug.Log(fieldNameMinimum + " must be less than or equal to " + fieldNameMaximum + " in object " + thisObject.name.ToString());
+            error = true;
+        }
+
+        if (ValidateCheckPositiveValue(thisObject, fieldNameMinimum, valueToCheckMinimum, isZeroAllowed))
+        {
+            error = true;
+        }
+
+        if (ValidateCheckPositiveValue(thisObject, fieldNameMaximum, valueToCheckMaximum, isZeroAllowed))
+        {
+            error = true;
+        }
+
+        return error;
+    }
+
+    /// <summary>
+    /// Positive range debug check for ints - set isZeroAllowed to true if the min and max range values can both be zero.
+    /// </summary>
+    /// <param name="thisObject"></param>
+    /// <param name="fieldNameMinimum"></param>
+    /// <param name="valueToCheckMinimum"></param>
+    /// <param name="fieldNameMaximum"></param>
+    /// <param name="valueToCheckMaximum"></param>
+    /// <param name="isZeroAllowed"></param>
+    /// <returns>True if error</returns>
+    public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, int valueToCheckMinimum, string fieldNameMaximum, int valueToCheckMaximum, bool isZeroAllowed)
     {
         bool error = false;
         if (valueToCheckMinimum > valueToCheckMaximum)
