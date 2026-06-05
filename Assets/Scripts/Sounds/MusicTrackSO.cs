@@ -16,7 +16,7 @@ public class MusicTrackSO : ScriptableObject
     #region Tooltip
     [Tooltip("The audio clip for the music track")]
     #endregion
-    public AudioClip audioClip;
+    public AudioClip musicClip;
 
     #region Tooltip
     [Tooltip("The volume for the music track")]
@@ -30,7 +30,7 @@ public class MusicTrackSO : ScriptableObject
     {
         // MUSIC TRACK DETAILS
         HelperUtilities.ValidateCheckEmptyString(this, nameof(musicName), musicName);
-        HelperUtilities.ValidateCheckNullValue(this, nameof(audioClip), audioClip);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicClip), musicClip);
         HelperUtilities.ValidateCheckPositiveValue(this, nameof(musicVolume), musicVolume, true);
     }
 #endif

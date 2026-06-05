@@ -39,6 +39,30 @@ public class GameResources : MonoBehaviour
     #endregion
     public CurrentPlayerSO currentPlayer;
 
+    #region Header MUSIC
+    [Space(10)]
+    [Header("MUSIC")]
+    #endregion
+    #region Tooltip
+    [Tooltip("Populate with the music master mixer group")]
+    #endregion
+    public AudioMixerGroup musicMasterMixerGroup;
+
+    #region Tooltip
+    [Tooltip("Music on full snapshot")]
+    #endregion
+    public AudioMixerSnapshot musicOnFullSnapshot;
+
+    #region Tooltip
+    [Tooltip("Music low snapshot")]
+    #endregion
+    public AudioMixerSnapshot musicLowSnapshot;
+
+    #region Tooltip
+    [Tooltip("Music off snapshot")]
+    #endregion
+    public AudioMixerSnapshot musicOffSnapshot;
+
     #region Header SOUNDS
     [Space(10)]
     [Header("SOUNDS")]
@@ -188,6 +212,12 @@ public class GameResources : MonoBehaviour
         
         // PLAYER
         HelperUtilities.ValidateCheckNullValue(this, nameof(currentPlayer), currentPlayer);
+
+        // MUSIC
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicMasterMixerGroup), musicMasterMixerGroup);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicOnFullSnapshot), musicOnFullSnapshot);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicLowSnapshot), musicLowSnapshot);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(musicOffSnapshot), musicOffSnapshot);
 
         // SOUNDS
         HelperUtilities.ValidateCheckNullValue(this, nameof(soundsMasterMixerGroup), soundsMasterMixerGroup);
