@@ -51,6 +51,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
     private const int scoreMultiplierMax = 30;
 
     private InstantiatedRoom bossRoom;
+    private bool skullIconAddedToMap = false;
 
     private bool isFading = false;
 
@@ -121,6 +122,21 @@ public class GameManager : SingletonMonobehavior<GameManager>
     /// <param name="roomChangedEventArgs"></param>
     private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
     {
+        if (!skullIconAddedToMap)
+        {
+            foreach (string roomID in roomChangedEventArgs.room.childRoomIDList)
+            {
+                if (DungeonBuilder.Instance.dungeonBuilderRoomDictionary[roomID].roomNodeType.isBossRoom)
+                {
+                    bossRoom = DungeonBuilder.Instance.dungeonBuilderRoomDictionary[roomID].instantiatedRoom;
+
+                    AddSkullIconToMap();
+
+                    bossRoom = null;
+                }
+            }
+        }
+
         SetCurrentRoom(roomChangedEventArgs.room);
     }
 
@@ -280,6 +296,23 @@ public class GameManager : SingletonMonobehavior<GameManager>
 
         //// Debug
         // Debug.log(room.prefab.name.ToString());
+    }
+
+    /// <summary>
+    /// Add the skull icon to the map to guide the player to the boss room
+    /// </summary>
+    private void AddSkullIconToMap()
+    {
+        if (!skullIconAddedToMap)
+        {
+            GameObject bossRoomDoor = bossRoom.GetComponentInChildren<Door>().gameObject;
+
+            GameObject skullIcon = Instantiate(GameResources.Instance.minimapSkullPrefab, bossRoom.transform);
+
+            skullIcon.transform.localPosition = bossRoomDoor.transform.localPosition;
+        }
+
+        skullIconAddedToMap = true;
     }
 
     /// <summary>
@@ -457,6 +490,11 @@ public class GameManager : SingletonMonobehavior<GameManager>
 
         // Unlock boss room doors with no delay
         bossRoom.UnlockDoors(0f);
+
+        if (!skullIconAddedToMap)
+        {
+            AddSkullIconToMap();
+        }
 
         // Wait for 2 seconds
         yield return new WaitForSeconds(2f);
