@@ -26,6 +26,13 @@ public class ActivateRooms : MonoBehaviour
     /// </summary>
     private void EnableRooms()
     {
+        // Check if the player is currently viewing the dungeon overview map
+        if (GameManager.Instance.gameState == GameState.dungeonOverviewMap)
+        {
+            // If the player is viewing the dungeon overview map, wait until the player leaves the map to disable rooms out of vision from the minimap camera
+            return;
+        }
+
         HelperUtilities.CameraWorldPositionBounds(out Vector2Int miniMapCameraWorldPositionLowerBounds, out Vector2Int miniMapCameraWorldPositionUpperBounds, miniMapCamera);
 
         HelperUtilities.CameraWorldPositionBounds(out Vector2Int mainCameraWorldPositionLowerBounds, out Vector2Int mainCameraWorldPositionUpperBounds, cameraMain);
