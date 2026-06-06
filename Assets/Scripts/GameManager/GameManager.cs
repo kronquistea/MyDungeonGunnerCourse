@@ -406,7 +406,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
         }
     }
 
-    private void PauseGameMenu()
+    public void PauseGameMenu()
     {
         // Check if the game is not already paused
         if (gameState != GameState.gamePaused)
