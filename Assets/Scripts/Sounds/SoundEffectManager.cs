@@ -54,4 +54,38 @@ public class SoundEffectManager : SingletonMonobehavior<SoundEffectManager>
             GameResources.Instance.soundsMasterMixerGroup.audioMixer.SetFloat("soundsVolume", HelperUtilities.LinearToDecibels(soundsVolume));
         }
     }
+
+    /// <summary>
+    /// Increase the sounds volume
+    /// </summary>
+    public void IncreaseSoundsVolume()
+    {
+        int maxSoundsVolume = 20;
+
+        if (soundsVolume >= maxSoundsVolume)
+        {
+            return;
+        }
+
+        soundsVolume++;
+
+        SetSoundsVolume(soundsVolume);
+    }
+
+    /// <summary>
+    /// Decrease the sounds volume
+    /// </summary>
+    public void DecreaseSoundsVolume()
+    {
+        int minSoundsVolume = 0;
+
+        if (soundsVolume <= minSoundsVolume)
+        {
+            return;
+        }
+
+        soundsVolume--;
+
+        SetSoundsVolume(soundsVolume);
+    }
 }

@@ -49,6 +49,48 @@ public class MusicManager : SingletonMonobehavior<MusicManager>
     }
 
     /// <summary>
+    /// Increase the music volume 
+    /// </summary>
+    public void IncreaseMusicVolume()
+    {
+        // Set max music volume 
+        int maxMusicVolume = 20;
+
+        // Check if the current music volume is at max or not
+        if (musicVolume >= maxMusicVolume)
+        {
+            return;
+        }
+
+        // Increase the music volume
+        musicVolume++;
+
+        // Set the music volume
+        SetMusicVolume(musicVolume);
+    }
+
+    /// <summary>
+    /// Decrease the music volume
+    /// </summary>
+    public void DecreaseMusicVolume()
+    {
+        // Set min music volume
+        int minMusicVolume = 0;
+
+        // Check if the current volume is at lowest or not
+        if (musicVolume <= minMusicVolume)
+        {
+            return;
+        }
+
+        // Decrease the music volume
+        musicVolume--;
+
+        // Set the music volume
+        SetMusicVolume(musicVolume);
+    }
+
+    /// <summary>
     /// Play the desired music track
     /// </summary>
     /// <param name="musicTrack"></param>
