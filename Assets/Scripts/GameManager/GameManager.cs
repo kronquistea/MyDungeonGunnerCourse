@@ -18,6 +18,11 @@ public class GameManager : SingletonMonobehavior<GameManager>
     [SerializeField] private TextMeshProUGUI messageTextTMP;
 
     #region Tooltip
+    [Tooltip("Populate with pause menu gameobject in hierarchy")]
+    #endregion
+    [SerializeField] private GameObject pauseMenu;
+
+    #region Tooltip
     [Tooltip("Populate with the FadeImage canvas group component in the FadeScreenUI")]
     #endregion
     [SerializeField] private CanvasGroup canvasGroup;
@@ -236,10 +241,22 @@ public class GameManager : SingletonMonobehavior<GameManager>
                 break;
 
             case GameState.playingLevel:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGameMenu();
+                }
+
                 // Check if the player is holding the tab key
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
                     DisplayDungeonOverviewMap();
+                }
+                break;
+
+            case GameState.engagingEnemies:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGameMenu();
                 }
                 break;
 
@@ -252,9 +269,21 @@ public class GameManager : SingletonMonobehavior<GameManager>
                 break;
 
             case GameState.bossStage: // Enable the player to open the map after clearing all rooms, but before fighting the boss
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGameMenu();
+                }
+
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
                     DisplayDungeonOverviewMap();
+                }
+                break;
+
+            case GameState.engagingBoss:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGameMenu();
                 }
                 break;
 
@@ -281,6 +310,13 @@ public class GameManager : SingletonMonobehavior<GameManager>
 
             case GameState.restartGame:
                 RestartGame();
+                break;
+
+            case GameState.gamePaused:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    PauseGameMenu();
+                }
                 break;
         }
     }
@@ -367,6 +403,30 @@ public class GameManager : SingletonMonobehavior<GameManager>
 
             // Start the BossStage coroutine
             StartCoroutine(BossStage());
+        }
+    }
+
+    public void PauseGameMenu()
+    {
+        // Check if the game is not already paused
+        if (gameState != GameState.gamePaused)
+        {
+            pauseMenu.SetActive(true);
+
+            GetPlayer().playerControl.DisablePlayer();
+
+            previousGameState = gameState;
+            gameState = GameState.gamePaused;
+        }
+        // Else check if the game is already paused
+        else if (gameState == GameState.gamePaused)
+        {
+            pauseMenu.SetActive(false);
+
+            GetPlayer().playerControl.EnablePlayer();
+
+            gameState = previousGameState;
+            previousGameState = GameState.gamePaused;
         }
     }
 
@@ -703,8 +763,12 @@ public class GameManager : SingletonMonobehavior<GameManager>
 #if UNITY_EDITOR
     private void OnValidate()
     {
+        // OBJECT REFERENCES
         HelperUtilities.ValidateCheckNullValue(this, nameof(messageTextTMP), messageTextTMP);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(pauseMenu), pauseMenu);
         HelperUtilities.ValidateCheckNullValue(this, nameof(canvasGroup), canvasGroup);
+        
+        // DUNGEON LEVELS
         HelperUtilities.ValidateCheckEnumerableValues(this, nameof(dungeonLevelList), dungeonLevelList);
     }
 #endif

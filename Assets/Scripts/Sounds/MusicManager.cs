@@ -23,7 +23,19 @@ public class MusicManager : SingletonMonobehavior<MusicManager>
 
     private void Start()
     {
+        // Check if the player has set a different volume than the default volume in the previous game session
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            musicVolume = PlayerPrefs.GetInt("musicVolume");
+        }
+
         SetMusicVolume(musicVolume);
+    }
+
+    private void OnDisable()
+    {
+        // Store music volume between game sessions
+        PlayerPrefs.SetInt("musicVolume", musicVolume);
     }
 
     /// <summary>
@@ -46,6 +58,48 @@ public class MusicManager : SingletonMonobehavior<MusicManager>
             // Set the music volume to the desired volume in decibels
             GameResources.Instance.musicMasterMixerGroup.audioMixer.SetFloat("musicVolume", HelperUtilities.LinearToDecibels(musicVolume));
         }
+    }
+
+    /// <summary>
+    /// Increase the music volume 
+    /// </summary>
+    public void IncreaseMusicVolume()
+    {
+        // Set max music volume 
+        int maxMusicVolume = 20;
+
+        // Check if the current music volume is at max or not
+        if (musicVolume >= maxMusicVolume)
+        {
+            return;
+        }
+
+        // Increase the music volume
+        musicVolume++;
+
+        // Set the music volume
+        SetMusicVolume(musicVolume);
+    }
+
+    /// <summary>
+    /// Decrease the music volume
+    /// </summary>
+    public void DecreaseMusicVolume()
+    {
+        // Set min music volume
+        int minMusicVolume = 0;
+
+        // Check if the current volume is at lowest or not
+        if (musicVolume <= minMusicVolume)
+        {
+            return;
+        }
+
+        // Decrease the music volume
+        musicVolume--;
+
+        // Set the music volume
+        SetMusicVolume(musicVolume);
     }
 
     /// <summary>
