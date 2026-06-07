@@ -720,7 +720,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
     /// </summary>
     private void RestartGame()
     {
-        SceneManager.LoadScene("MainGameScene");
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     /// <summary>
