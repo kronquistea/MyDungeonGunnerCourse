@@ -9,7 +9,19 @@ public class SoundEffectManager : SingletonMonobehavior<SoundEffectManager>
 
     private void Start()
     {
+        // Check if the player set a different sound volume level from the default volume in the previous game session
+        if (PlayerPrefs.HasKey("soundsVolume"))
+        {
+            soundsVolume = PlayerPrefs.GetInt("soundsVolume", soundsVolume);
+        }
+
         SetSoundsVolume(soundsVolume);
+    }
+
+    private void OnDisable()
+    {
+        // Store sounds volume set by player between game sessions
+        PlayerPrefs.SetInt("soundsVolume", soundsVolume);
     }
 
     public void PlaySoundEffect(SoundEffectSO soundEffect)

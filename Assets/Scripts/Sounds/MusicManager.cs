@@ -23,7 +23,19 @@ public class MusicManager : SingletonMonobehavior<MusicManager>
 
     private void Start()
     {
+        // Check if the player has set a different volume than the default volume in the previous game session
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            musicVolume = PlayerPrefs.GetInt("musicVolume");
+        }
+
         SetMusicVolume(musicVolume);
+    }
+
+    private void OnDisable()
+    {
+        // Store music volume between game sessions
+        PlayerPrefs.SetInt("musicVolume", musicVolume);
     }
 
     /// <summary>
