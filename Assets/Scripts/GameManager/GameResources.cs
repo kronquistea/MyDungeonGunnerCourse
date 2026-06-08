@@ -29,6 +29,16 @@ public class GameResources : MonoBehaviour
     #endregion
     public RoomNodeTypeListSO roomNodeTypeList;
 
+    #region Header PLAYER SELECTION
+    [Space(10)]
+    [Header("PLAYER SELECTION")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("Populate with the player selection prefab")]
+    #endregion
+    public GameObject playerSelectionPrefab;
+
     #region Header PLAYER
     [Space(10)]
     [Header("PLAYER")]
@@ -38,6 +48,11 @@ public class GameResources : MonoBehaviour
     [Tooltip("The current player scriptable object - this is used to reference the current player between scenes")]
     #endregion
     public CurrentPlayerSO currentPlayer;
+
+    #region Tooltip
+    [Tooltip("Player details list - populate list with playerdetails SOs")]
+    #endregion
+    public List<PlayerDetailsSO> playerDetailsList;
 
     #region Header MUSIC
     [Space(10)]
@@ -214,9 +229,13 @@ public class GameResources : MonoBehaviour
     {
         //DUNGEON
         HelperUtilities.ValidateCheckNullValue(this, nameof(roomNodeTypeList), roomNodeTypeList);
-        
+
+        // PLAYER SELECTION
+        HelperUtilities.ValidateCheckNullValue(this, nameof(playerSelectionPrefab), playerSelectionPrefab);
+
         // PLAYER
         HelperUtilities.ValidateCheckNullValue(this, nameof(currentPlayer), currentPlayer);
+        HelperUtilities.ValidateCheckEnumerableValues(this, nameof(playerDetailsList), playerDetailsList);
 
         // MUSIC
         HelperUtilities.ValidateCheckNullValue(this, nameof(musicMasterMixerGroup), musicMasterMixerGroup);

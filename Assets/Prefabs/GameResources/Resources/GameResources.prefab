@@ -44,7 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
+  playerSelectionPrefab: {fileID: 7686845883828503483, guid: b44e191c38df71e4da6b18515d36aba1, type: 3}
   currentPlayer: {fileID: 11400000, guid: c8d86a47d320e664ebd293598f5c697b, type: 2}
+  playerDetailsList:
+  - {fileID: 11400000, guid: d0eb36a70015edf41ad7cf14874d11b4, type: 2}
+  - {fileID: 11400000, guid: cdb40ddaa0ea31c4d8865f11069d9421, type: 2}
+  - {fileID: 11400000, guid: be3e4dbd8925c83459a549775b9c3913, type: 2}
   musicMasterMixerGroup: {fileID: -7206380732494497733, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   mainMenuMusic: {fileID: 11400000, guid: 734fafb5a1f3a1c40a47dea2325ef623, type: 2}
   musicOnFullSnapshot: {fileID: 24500006, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
