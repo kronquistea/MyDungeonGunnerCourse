@@ -1,6 +1,7 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PauseMenuUI : MonoBehaviour
 {
@@ -35,6 +36,14 @@ public class PauseMenuUI : MonoBehaviour
     {
         // Reenable scale at which time passes to normal level
         Time.timeScale = 1f;
+    }
+
+    /// <summary>
+    /// Quit and load main menu - linked to from pause menu UI
+    /// </summary>
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
     
     /// <summary>

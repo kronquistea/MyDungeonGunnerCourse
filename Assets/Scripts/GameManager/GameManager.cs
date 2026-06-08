@@ -658,6 +658,42 @@ public class GameManager : SingletonMonobehavior<GameManager>
         // Disable the player
         GetPlayer().playerControl.DisablePlayer();
 
+        // Get player rank
+        int rank = HighScoreManager.Instance.GetRank(gameScore);
+
+        string rankText;
+
+        // Check if the player's score is ranked in the top number of high scores to save
+        if (rank > 0 && rank <= Settings.numberOfHighScoresToSave)
+        {
+            // Set rank text to be displayed to player
+            rankText = "YOUR SCORE IS RANKED " + rank.ToString("#0") + " IN THE TOP " + Settings.numberOfHighScoresToSave.ToString("#0");
+
+            string name = GameResources.Instance.currentPlayer.playerName;
+
+            if (name == "")
+            {
+                name = playerDetails.playerCharacterName.ToUpper();
+            }
+
+            HighScoreManager.Instance.AddScore(
+                new Score() 
+                    { 
+                        playerName = name, 
+                        levelDescription = "LEVEL " + (currentDungeonLevelListIndex + 1).ToString() + " - " + GetCurrentDungeonLevel().levelName.ToUpper(), 
+                        playerScore = gameScore 
+                    }, 
+                    rank
+            );
+        }
+        else
+        {
+            rankText = "YOUR SCORE ISN'T RANKED IN THE TOP " + Settings.numberOfHighScoresToSave.ToString("#0");
+        }
+
+        // Wait for 1 second
+        yield return new WaitForSeconds(1f);
+
         // Fade in canvas to display message
         yield return StartCoroutine(Fade(0f, 1f, 2f, Color.black));
 
@@ -666,7 +702,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
         yield return StartCoroutine(DisplayMessageRoutine(gameWonMessage, Color.white, 5f));
 
         // Show score message
-        string scoreMessage = "YOUR SCORE: " + gameScore.ToString("###,###0");
+        string scoreMessage = "YOUR SCORE: " + gameScore.ToString("###,###0") + "\n\n" + rankText;
         yield return StartCoroutine(DisplayMessageRoutine(scoreMessage, Color.white, 4f));
 
         // Show further action message
@@ -687,6 +723,39 @@ public class GameManager : SingletonMonobehavior<GameManager>
         // Disable the player
         GetPlayer().playerControl.DisablePlayer();
 
+        // Get player rank
+        int rank = HighScoreManager.Instance.GetRank(gameScore);
+
+        string rankText;
+
+        // Check if the player's score is ranked in the top number of high scores to save
+        if (rank > 0 && rank <= Settings.numberOfHighScoresToSave)
+        {
+            // Set rank text to be displayed to player
+            rankText = "YOUR SCORE IS RANKED " + rank.ToString("#0") + " IN THE TOP " + Settings.numberOfHighScoresToSave.ToString("#0");
+
+            string name = GameResources.Instance.currentPlayer.playerName;
+
+            if (name == "")
+            {
+                name = playerDetails.playerCharacterName.ToUpper();
+            }
+
+            HighScoreManager.Instance.AddScore(
+                new Score()
+                {
+                    playerName = name,
+                    levelDescription = "LEVEL " + (currentDungeonLevelListIndex + 1).ToString() + " - " + GetCurrentDungeonLevel().levelName.ToUpper(),
+                    playerScore = gameScore
+                },
+                    rank
+            );
+        }
+        else
+        {
+            rankText = "YOUR SCORE ISN'T RANKED IN THE TOP " + Settings.numberOfHighScoresToSave.ToString("#0");
+        }
+
         // Wait for 1 second
         yield return new WaitForSeconds(1f);
 
@@ -705,7 +774,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
         yield return StartCoroutine(DisplayMessageRoutine(gameLostMessage, Color.white, 5f));
 
         // Show score message
-        string scoreMessage = "YOUR SCORE: " + gameScore.ToString("###,###0");
+        string scoreMessage = "YOUR SCORE: " + gameScore.ToString("###,###0") + "\n\n" + rankText;
         yield return StartCoroutine(DisplayMessageRoutine(scoreMessage, Color.white, 4f));
 
         // Show further action message
@@ -720,7 +789,7 @@ public class GameManager : SingletonMonobehavior<GameManager>
     /// </summary>
     private void RestartGame()
     {
-        SceneManager.LoadScene("MainGameScene");
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     /// <summary>

@@ -44,8 +44,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomNodeTypeList: {fileID: 11400000, guid: aa41a90c7e8304c47b07299dee9a9f76, type: 2}
+  playerSelectionPrefab: {fileID: 7686845883828503483, guid: b44e191c38df71e4da6b18515d36aba1, type: 3}
   currentPlayer: {fileID: 11400000, guid: c8d86a47d320e664ebd293598f5c697b, type: 2}
+  playerDetailsList:
+  - {fileID: 11400000, guid: d0eb36a70015edf41ad7cf14874d11b4, type: 2}
+  - {fileID: 11400000, guid: cdb40ddaa0ea31c4d8865f11069d9421, type: 2}
+  - {fileID: 11400000, guid: be3e4dbd8925c83459a549775b9c3913, type: 2}
   musicMasterMixerGroup: {fileID: -7206380732494497733, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
+  mainMenuMusic: {fileID: 11400000, guid: 734fafb5a1f3a1c40a47dea2325ef623, type: 2}
   musicOnFullSnapshot: {fileID: 24500006, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicLowSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicOffSnapshot: {fileID: -3084740370723268673, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
@@ -69,6 +75,7 @@ MonoBehaviour:
   preferredEnemyTilePath: {fileID: 11400000, guid: 3ce5fb260af53d24887b55c3d50041e2, type: 2}
   heartIconPrefab: {fileID: 986572324098711595, guid: bbf91031fea902948826bfd45d0a5879, type: 3}
   ammoIconPrefab: {fileID: 391766695017352988, guid: 48d5174655c1efb40843c381ae7e8852, type: 3}
+  scorePrefab: {fileID: 6438321401946007236, guid: 2df2dab37a592864a8e581c50d2b96e6, type: 3}
   chestItemPrefab: {fileID: 2974847867148492328, guid: c824698b3564afd44bd12c9f6d2ce519, type: 3}
   heartIcon: {fileID: 21300000, guid: 93356131eec0f44458223985928ac6e3, type: 3}
   bulletIcon: {fileID: 21300000, guid: a2482871b46d396438236c07b6402283, type: 3}

@@ -29,6 +29,16 @@ public class GameResources : MonoBehaviour
     #endregion
     public RoomNodeTypeListSO roomNodeTypeList;
 
+    #region Header PLAYER SELECTION
+    [Space(10)]
+    [Header("PLAYER SELECTION")]
+    #endregion
+
+    #region Tooltip
+    [Tooltip("Populate with the player selection prefab")]
+    #endregion
+    public GameObject playerSelectionPrefab;
+
     #region Header PLAYER
     [Space(10)]
     [Header("PLAYER")]
@@ -39,6 +49,11 @@ public class GameResources : MonoBehaviour
     #endregion
     public CurrentPlayerSO currentPlayer;
 
+    #region Tooltip
+    [Tooltip("Player details list - populate list with playerdetails SOs")]
+    #endregion
+    public List<PlayerDetailsSO> playerDetailsList;
+
     #region Header MUSIC
     [Space(10)]
     [Header("MUSIC")]
@@ -47,6 +62,11 @@ public class GameResources : MonoBehaviour
     [Tooltip("Populate with the music master mixer group")]
     #endregion
     public AudioMixerGroup musicMasterMixerGroup;
+
+    #region Tooltip
+    [Tooltip("Main menu music SO")]
+    #endregion
+    public MusicTrackSO mainMenuMusic;
 
     #region Tooltip
     [Tooltip("Music on full snapshot")]
@@ -172,7 +192,12 @@ public class GameResources : MonoBehaviour
     [Tooltip("Populate with ammo icon prefab")]
     #endregion
     public GameObject ammoIconPrefab;
-    
+
+    #region Tooltip
+    [Tooltip("Populate with the score prefab")]
+    #endregion
+    public GameObject scorePrefab;
+
     #region Header CHESTS
     [Space(10)]
     [Header("CHEST")]
@@ -209,12 +234,17 @@ public class GameResources : MonoBehaviour
     {
         //DUNGEON
         HelperUtilities.ValidateCheckNullValue(this, nameof(roomNodeTypeList), roomNodeTypeList);
-        
+
+        // PLAYER SELECTION
+        HelperUtilities.ValidateCheckNullValue(this, nameof(playerSelectionPrefab), playerSelectionPrefab);
+
         // PLAYER
         HelperUtilities.ValidateCheckNullValue(this, nameof(currentPlayer), currentPlayer);
+        HelperUtilities.ValidateCheckEnumerableValues(this, nameof(playerDetailsList), playerDetailsList);
 
         // MUSIC
         HelperUtilities.ValidateCheckNullValue(this, nameof(musicMasterMixerGroup), musicMasterMixerGroup);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(mainMenuMusic), mainMenuMusic);
         HelperUtilities.ValidateCheckNullValue(this, nameof(musicOnFullSnapshot), musicOnFullSnapshot);
         HelperUtilities.ValidateCheckNullValue(this, nameof(musicLowSnapshot), musicLowSnapshot);
         HelperUtilities.ValidateCheckNullValue(this, nameof(musicOffSnapshot), musicOffSnapshot);
@@ -244,6 +274,7 @@ public class GameResources : MonoBehaviour
         // UI
         HelperUtilities.ValidateCheckNullValue(this, nameof(heartIconPrefab), heartIconPrefab);
         HelperUtilities.ValidateCheckNullValue(this, nameof(ammoIconPrefab), ammoIconPrefab);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(scorePrefab), scorePrefab);
 
         // CHESTS
         HelperUtilities.ValidateCheckNullValue(this, nameof(chestItemPrefab), chestItemPrefab);
