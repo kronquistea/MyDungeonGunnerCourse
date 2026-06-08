@@ -23,6 +23,17 @@ public class MainMenuUI : MonoBehaviour
     #endregion
     [SerializeField] private GameObject mainMenuButton;
 
+    #region Tooltip
+    [Tooltip("Populate with the instructions button gameobject")]
+    #endregion
+    [SerializeField] private GameObject instructionsButton;
+
+    #region Tooltip
+    [Tooltip("Populate with the quit button gameobject")]
+    #endregion
+    [SerializeField] private GameObject quitButton;
+
+    private bool isInstructionsSceneLoaded = false;
     private bool isHighScoresSceneLoaded = false;
 
     private void Start()
@@ -49,6 +60,8 @@ public class MainMenuUI : MonoBehaviour
     {
         playButton.SetActive(false);
         highScoresButton.SetActive(false);
+        instructionsButton.SetActive(false);
+        quitButton.SetActive(false);
         isHighScoresSceneLoaded = true;
 
         SceneManager.UnloadSceneAsync("CharacterSelectorScene");
@@ -56,6 +69,24 @@ public class MainMenuUI : MonoBehaviour
         mainMenuButton.SetActive(true);
 
         SceneManager.LoadScene("HighScoreScene", LoadSceneMode.Additive);
+    }
+
+    /// <summary>
+    /// Called from instructions button
+    /// </summary>
+    public void LoadInstructions()
+    {
+        playButton.SetActive(false);
+        highScoresButton.SetActive(false);
+        instructionsButton.SetActive(false);
+        quitButton.SetActive(false);
+        isInstructionsSceneLoaded = true;
+
+        SceneManager.UnloadSceneAsync("CharacterSelectorScene");
+
+        mainMenuButton.SetActive(true);
+
+        SceneManager.LoadScene("InstructionsScene", LoadSceneMode.Additive);
     }
 
     /// <summary>
@@ -70,11 +101,27 @@ public class MainMenuUI : MonoBehaviour
             SceneManager.UnloadSceneAsync("HighScoreScene");
             isHighScoresSceneLoaded = false;
         }
+        else if (isInstructionsSceneLoaded)
+        {
+            SceneManager.UnloadSceneAsync("InstructionsScene");
+            isInstructionsSceneLoaded = false;
+        }
 
         playButton.SetActive(true);
         highScoresButton.SetActive(true);
+        instructionsButton.SetActive(true);
+        quitButton.SetActive(true);
 
         SceneManager.LoadScene("CharacterSelectorScene", LoadSceneMode.Additive);
+    }
+
+    /// <summary>
+    /// Quit the game when the game is being played OUTSIDE of the Unity editor
+    /// </summary>
+    public void QuitGame()
+    {
+        // Quit the application
+        Application.Quit();
     }
 
     #region Validation
@@ -85,6 +132,8 @@ public class MainMenuUI : MonoBehaviour
         HelperUtilities.ValidateCheckNullValue(this, nameof(playButton), playButton);
         HelperUtilities.ValidateCheckNullValue(this, nameof(highScoresButton), highScoresButton);
         HelperUtilities.ValidateCheckNullValue(this, nameof(mainMenuButton), mainMenuButton);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(instructionsButton), instructionsButton);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(quitButton), quitButton);
     }
 #endif
     #endregion
